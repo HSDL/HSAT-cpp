@@ -121,11 +121,16 @@ void Agent::iterate(int iter){
 //// Updates temperature using simple stretched Cauchy schedule.
 void Agent::update_temp(void){
     if(p.adaptive){
-        history.pop_front();
+        // Update the quality history and calculate update
         history.push_back(fx_current);
-//        double tempvar = (1 - p.delt*Ti/stdev(history));
-//        if(tempvar < 0)
-//        Ti *= (1 - p.delt*Ti/stdev(history));
+        if(history.size() > p.history_length){
+            history.pop_front();
+        } else {
+            double triki_update = (1 - p.delt*Ti/stdev(history));
+            if(triki_update > 0){
+                Ti *= triki_update;
+            }
+        }
     } else {
         Ti = p.temp_init/(1 + p.delt*(static_cast <double> (iteration_number)));
     }

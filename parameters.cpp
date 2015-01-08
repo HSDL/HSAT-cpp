@@ -7,6 +7,7 @@ int Parameters::n_reps;
 int Parameters::max_iter;
 int Parameters::D;
 int Parameters::n_agents;
+int Parameters::history_length;
 double Parameters::ub;
 double Parameters::lb;
 double Parameters::temp_init;

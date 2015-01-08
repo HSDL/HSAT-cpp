@@ -20,9 +20,9 @@ public:
     static double lb;
     static string function;
 
-    // Set by call to function
     static bool adaptive;
     static bool interacting;
+    static int history_length;
     static int n_agents;
     static double temp_init;
     static double delt;
