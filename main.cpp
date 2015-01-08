@@ -11,7 +11,11 @@ int main(void) {
     // Define and  set parameters
     Parameters p;
     p.function = "griewank";
-    p.set_nasasa();
+    p.adaptive = false;
+    p.interacting = false;
+    p.n_agents = 1;
+    p.temp_init = 0.4284;
+    p.delt = 0.02633;
     p.n_reps = 10;
     p.max_iter = 30000;
     p.D = 30;

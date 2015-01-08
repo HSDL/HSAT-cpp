@@ -171,23 +171,23 @@ int weighted_choice(vector<double> x){
 
 // Compute mean of a vector
 double mean(deque<double> x) {
-    double sum = 0;
-
-    for(vector<double>::iterator j=x.begin(); j!=x.end();++j){
-        sum += *j;
-    }
-
-    return sum/x.size();
+//    double sum = 0;
+//
+//    for(vector<double>::iterator j=x.begin(); j!=x.end();++j){
+//        sum += *j;
+//    }
+//
+//    return sum/x.size();
 }
 
 // Compute standard deviation of a vector
 double stdev(deque<double> x) {
-    double mean_val = mean(x);
-    double s = 0;
-
-    for(vector<double>::iterator j=x.begin(); j!=x.end();++j){
-        s += pow((*j - mean_val), 2.0);
-    }
-
-    return sqrt(s/x.size());
+//    double mean_val = mean(x);
+//    double s = 0;
+//
+//    for(vector<double>::iterator j=x.begin(); j!=x.end();++j){
+//        s += pow((*j - mean_val), 2.0);
+//    }
+//
+//    return sqrt(s/x.size());
 }

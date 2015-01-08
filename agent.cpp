@@ -123,9 +123,9 @@ void Agent::update_temp(void){
     if(p.adaptive){
         history.pop_front();
         history.push_back(fx_current);
-        double tempvar = (1 - p.delt*Ti/stdev(history));
+//        double tempvar = (1 - p.delt*Ti/stdev(history));
 //        if(tempvar < 0)
-        Ti *= (1 - p.delt*Ti/stdev(history));
+//        Ti *= (1 - p.delt*Ti/stdev(history));
     } else {
         Ti = p.temp_init/(1 + p.delt*(static_cast <double> (iteration_number)));
     }
