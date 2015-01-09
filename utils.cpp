@@ -170,6 +170,11 @@ int weighted_choice(vector<double> x){
 }
 
 // Compute mean of a vector
+double mean(vector<double> x) {
+    return accumulate(x.begin(), x.end(), 0.0) / x.size();
+}
+
+// Compute mean of a deque
 double mean(deque<double> x) {
     double sum = 0;
 

@@ -8,6 +8,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <cmath>
+#include <numeric>
 #include <cfloat>
 #include <deque>
 
@@ -51,6 +52,9 @@ void save_to_file(string file_path, vector<vector<double>>);
 int weighted_choice(vector<double> x);
 
 // Compute mean of a vector
+double mean(vector<double> x);
+
+// Compute mean of a deque
 double stdev(deque<double> x);
 
 // Compute standard deviation of a list

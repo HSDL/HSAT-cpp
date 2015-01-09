@@ -36,5 +36,5 @@ double MultipleTeams::solve(void){
     sort(cdf.begin(), cdf.end());
 
     // Return the mean solution
-    return accumulate(cdf.begin(), cdf.end(), 0.0) / cdf.size();
+    return mean(cdf);
 }

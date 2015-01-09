@@ -47,7 +47,7 @@ vector<double> Agent::candidate_solution(){
     // Random draw to get candidate starting position
     //   IF Interacting: Check out other solutions
     //   ELSE: Start from where you are
-    if(p.interacting == true) {
+    if(p.interacting) {
         w = all_fx_current;
         wmax = vector_max(w);
         for (int i = 0; i < w.size(); i++) {
@@ -121,12 +121,13 @@ void Agent::iterate(int iter){
 //// Updates temperature using simple stretched Cauchy schedule.
 void Agent::update_temp(void){
     if(p.adaptive){
-        // Update the quality history and calculate update
+        // Update the quality history
         history.push_back(fx_current);
+
+        // If the quality history is too long, pop one out and calculate the update
         if(history.size() > p.history_length){
             history.pop_front();
-        } else {
-            double triki_update = (1 - p.delt*Ti/stdev(history));
+            double triki_update = (1 - p.delt*Ti/pow(stdev(history), 2));
             if(triki_update > 0){
                 Ti *= triki_update;
             }
