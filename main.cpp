@@ -6,7 +6,7 @@
 #include <fstream>
 
 
-int main(void) {
+int main(int argc, char *argv[]) {
 
     // Define and  set parameters
     Parameters p;
@@ -48,7 +48,7 @@ int main(void) {
     p.lb = -10;
 
     // Define location to save results
-    string file_name = "/Users/IDIG/Desktop/asdf.txt";
+    string file_name = argv[2];
 
     // Solve and print results
     MultipleTeams MT;
