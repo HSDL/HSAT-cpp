@@ -1,6 +1,3 @@
 language: cpp
 compiler: gcc
-script:
-  - cmake .
-  - make
-  - ./bin/HSAT test/example.txt output_test.txt
+script: cmake .
