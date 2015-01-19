@@ -3,7 +3,7 @@
 
 #include <string>
 #include <vector>
-
+#include <sstream>
 #include "utils.hpp"
 
 using namespace std;
@@ -29,6 +29,7 @@ public:
 
     //// Functions
     Parameters(void);
+    void read_file(string file_name);
     double obj(vector<double>);
 
 private:
