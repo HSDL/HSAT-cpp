@@ -8,14 +8,14 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "/Users/IDIG/Dropbox/Research_CMU_WaveTeams/H
 set(SOURCE_FILES
     main.cpp
     include/utils.hpp
-    src/utils.cpp
-    src/agent.cpp
     include/agent.hpp
     include/parameters.hpp
-    src/parameters.cpp
     include/team.hpp
+    include/multipleteams.hpp
+    src/utils.cpp
+    src/agent.cpp
+    src/parameters.cpp
     src/team.cpp
-    src/multipleteams.cpp
-    include/multipleteams.hpp)
+    src/multipleteams.cpp)
 
 add_executable(HSAT ${SOURCE_FILES})
