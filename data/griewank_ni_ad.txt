@@ -1,0 +1,12 @@
+FUNC    griewank
+NAGENTS 1
+ADAPT   1
+INTER   0
+TINIT   2e-03
+DELT    1e-10
+L_HIST  12
+NREPS   100
+MAX_IT  30000
+DIMS    30
+UBND    10
+LBND    -10
