@@ -3,5 +3,19 @@ project(HSAT)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(SOURCE_FILES main.cpp utils.hpp utils.cpp agent.cpp agent.hpp parameters.hpp parameters.cpp team.hpp team.cpp multipleteams.cpp multipleteams.hpp)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "/Users/IDIG/Dropbox/Research_CMU_WaveTeams/HSAT/bin")
+
+set(SOURCE_FILES
+    main.cpp
+    include/utils.hpp
+    src/utils.cpp
+    src/agent.cpp
+    include/agent.hpp
+    include/parameters.hpp
+    src/parameters.cpp
+    include/team.hpp
+    src/team.cpp
+    src/multipleteams.cpp
+    include/multipleteams.hpp)
+
 add_executable(HSAT ${SOURCE_FILES})

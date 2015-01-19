@@ -1,6 +1,6 @@
-#include "utils.hpp"
-#include "parameters.hpp"
-#include "multipleteams.hpp"
+#include "include/utils.hpp"
+#include "include/parameters.hpp"
+#include "include/multipleteams.hpp"
 
 
 int main(int argc, char *argv[]) {
