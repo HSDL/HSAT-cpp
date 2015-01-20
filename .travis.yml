@@ -1,6 +1,6 @@
 language: cpp
 
-compiler: gcc
+compiler: g++
 
 before_install:
   - sudo apt-get update
