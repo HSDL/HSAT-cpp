@@ -1,11 +1,9 @@
 # HSAT [![Build Status](https://travis-ci.org/cmccomb/HSAT.svg?branch=master)](https://travis-ci.org/cmccomb/HSAT)
 
-Implements the Heterogeneous Simulated Annealing Teams algorithm.
-
-## Contents:
-### ``src``
+Implements the Heterogeneous Simulated Annealing Teams algorithm. Contents include:
+## ``src``
 Contains the source files for the algorithm
-### ``include``
+## ``include``
 Includes the headers for the sources files
-### ``src``
+## ``test``
 Contains bash tests for the algorithm
