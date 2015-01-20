@@ -5,3 +5,4 @@ bin/*
 data/*
 results/*
 scripts/*
+build/*
