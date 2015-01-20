@@ -3,4 +3,4 @@
 
 PatternSearch::PatternSearch(void){}
 
-PatternSearch::solve(void)
+PatternSearch::solve(void){}
