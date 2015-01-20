@@ -2,3 +2,10 @@
 
 Implements the Heterogeneous Simulated Annealing Teams algorithm.
 
+## Contents:
+### ``src``
+Contains the source files for the algorithm
+### ``include``
+Includes the headers for the sources files
+### ``src``
+Contains bash tests for the algorithm
