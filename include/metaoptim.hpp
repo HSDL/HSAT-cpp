@@ -17,12 +17,12 @@ public:
     PatternSearch(void); // A function to construct the thing.
     void set_from_file(string file_name);
     void solve(int max_iter);  // A function to solve the problem.
-
-
+    
     //// Variables
     Parameters p;       // The parameters of the simulation
     int current_iteration;
-    vector<string> variables;
+    vector<string> var_list;
+    vector<double> var_vals;
     vector<double> step_sizes;
     double fx_current;
 

@@ -4,54 +4,30 @@
 PatternSearch::PatternSearch(void){}
 
 void PatternSearch::set_from_file(string file_name){
+    // Set the parameters to their current values in the setup file
+    p.set_from_file(file_name);
 
+    // Step through the setup file and build parameter lists
     ifstream inputFile(file_name);
     string line;
     string name;
+    double temp;
+    bool indicator;
 
     while (getline(inputFile, line))
     {
+        // Read a line
         istringstream ss(line);
+        ss >> name >> temp >> indicator;
 
-        ss >> name;
-
-        if(name == "FUNC") {
-            ss >> function;
-            cout << "Function:         "<< function << endl;
-        } else if(name == "NAGENTS"){
-            ss >> n_agents;
-            cout << "Number of agents: "<< n_agents << endl;
-        } else if(name == "ADAPT") {
-            ss >> adaptive;
-            cout << "Adaptive?:        "<< adaptive << endl;
-        } else if(name == "INTER") {
-            ss >> interacting;
-            cout << "Interacting?:     "<< interacting << endl;
-        } else if(name == "TINIT") {
-            ss >> temp_init;
-            cout << "Initial temp:     "<< temp_init << endl;
-        } else if(name == "DELT") {
-            ss >> delt;
-            cout << "Temp factor:      "<< delt << endl;
-        } else if(name == "L_HIST") {
-            ss >> history_length;
-            cout << "History length:   "<< history_length << endl;
-        } else if(name == "NREPS") {
-            ss >> n_reps;
-            cout << "Number of reps:   "<< n_reps << endl;
-        } else if(name == "MAX_IT") {
-            ss >> max_iter;
-            cout << "Max iterations:   "<< max_iter << endl;
-        } else if(name == "DIMS") {
-            ss >> D;
-            cout << "Number of dims:   "<< D << endl;
-        } else if(name == "UBND") {
-            ss >> ub;
-            cout << "Upper bound on x: "<< ub << endl;
-        } else if(name == "LBND") {
-            ss >> lb;
-            cout << "Lower bound on x: "<< lb << endl;
+        if(indicator) {
+            var_list.push_back(name);
+            var_vals.push_back(temp);
+            step_sizes.push_back(0.4*temp);
         }
     }
 }
 
+void PatternSearch::solve(int max_iter){
+    print(max_iter);
+}
