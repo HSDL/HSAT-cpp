@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
 
     // Define and  set parameters
     Parameters p;
-    p.read_file(argv[1]);
+    p.set_from_file(argv[1]);
 
     // Solve and print results
     MultipleTeams MT;

@@ -2,13 +2,7 @@ language: cpp
 
 compiler: g++
 
-before_install:
-  - sudo apt-get update
-  - sudo apt-get install cmake
-
-before_script:
+script:
   - mkdir build
   - cd build
   - cmake ..
-
-script: make

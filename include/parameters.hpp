@@ -29,8 +29,9 @@ public:
 
     //// Functions
     Parameters(void);
-    void read_file(string file_name);
-    double obj(vector<double>);
+    void set_from_file(string file_name);
+    void set_from_pair(string name, double x);
+    double obj(vector<double> x);
 
 private:
     //nothing yet

@@ -31,7 +31,7 @@ double Parameters::obj(vector<double> x) {
 }
 
 //// Function to read variables from a file
-void Parameters::read_file(string file_name) {
+void Parameters::set_from_file(string file_name) {
 
     ifstream inputFile(file_name);
     string line;
@@ -46,7 +46,7 @@ void Parameters::read_file(string file_name) {
         if(name == "FUNC") {
             ss >> function;
             cout << "Function:         "<< function << endl;
-        }else if(name == "NAGENTS"){
+        } else if(name == "NAGENTS"){
             ss >> n_agents;
             cout << "Number of agents: "<< n_agents << endl;
         } else if(name == "ADAPT") {
@@ -81,5 +81,18 @@ void Parameters::read_file(string file_name) {
             cout << "Lower bound on x: "<< lb << endl;
         }
     }
-
 }
+
+//// Sets parameters based on a vector
+void Parameters::set_from_pair(string name, double x) {
+    if(name == "DELT") {
+        delt = x;
+    } else if(name == "L_HIST"){
+        history_length =static_cast <int> (x);
+    } else if(name == "NAGENTS"){
+        n_agents = static_cast <int> (x);
+    } else if(name == "TINIT"){
+        temp_init = x;
+    }
+}
+
