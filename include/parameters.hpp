@@ -13,19 +13,19 @@ class Parameters{
 public:
     //// Variables
     // Must be set separately
-    static int n_reps;
-    static int max_iter;
-    static int D;
-    static double ub;
-    static double lb;
-    static string function;
+    int n_reps;
+    int max_iter;
+    int D;
+    double ub;
+    double lb;
+    string function;
 
-    static bool adaptive;
-    static bool interacting;
-    static int history_length;
-    static int n_agents;
-    static double temp_init;
-    static double delt;
+    bool adaptive;
+    bool interacting;
+    int history_length;
+    int n_agents;
+    double temp_init;
+    double delt;
 
     //// Functions
     Parameters(void);

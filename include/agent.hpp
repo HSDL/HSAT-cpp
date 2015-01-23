@@ -13,7 +13,7 @@ using namespace std;
 class Agent {
 public:
     //// Functions
-    Agent(int ID);          // A function to initialize the agent with a specific ID
+    Agent(int ID, Parameters p);          // A function to initialize the agent with a specific ID
     Agent(void);            // A function to intialize an agent inline for the purpose of modifying static vectors.
     void new_start(void);   // A function that selects a random starting point, and pushes it to other agents.
     void iterate(int iter); // A function to perform an iteration of SA.

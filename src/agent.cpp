@@ -8,7 +8,8 @@ vector<vector<double>> Agent::all_xx_current;
 Agent::Agent(void){}
 
 //// Normal agent constructor, take one int
-Agent::Agent(int ID){
+Agent::Agent(int ID, Parameters x){
+    p = x;
     // Remember your god-given name!
     id = ID;
 

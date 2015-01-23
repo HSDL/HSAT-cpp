@@ -5,12 +5,8 @@
 
 int main(int argc, char *argv[]) {
 
-    // Define and  set parameters
-    Parameters p;
-    p.set_from_file(argv[1]);
-
     // Solve and print results
-    MultipleTeams MT;
+    MultipleTeams MT(argv[1]);
     print(MT.solve());
     print(MT.cdf);
 

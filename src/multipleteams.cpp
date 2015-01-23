@@ -2,8 +2,11 @@
 
 using namespace std;
 
-//// This constructor actually does some things.
-MultipleTeams::MultipleTeams(void){
+// This does the things, and initializes p from file
+MultipleTeams::MultipleTeams(string file_name){
+    // Read from a file
+    p.set_from_file(file_name);
+
     // Define the vectors that we need with the appropriate length
     vector<double> temp1(p.max_iter/(double)p.n_agents, 0.0);
     vector<vector<double>> temp2(p.n_reps, temp1);
@@ -19,7 +22,7 @@ double MultipleTeams::solve(void){
 
     for(int i=0; i<p.n_reps; i++) {
         // Instantiate a new team
-        Team T;
+        Team T(p);
 
         // Give the team a new start
         T.new_start();

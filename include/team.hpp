@@ -10,7 +10,7 @@
 class Team {
 public:
     //// Functions
-    Team(void);
+    Team(Parameters p);
     void solve(void);
     void new_start(void);
     void iterate(int iter);

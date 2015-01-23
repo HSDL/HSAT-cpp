@@ -1,7 +1,8 @@
 #include "../include/team.hpp"
 
 //// This constructs the team
-Team::Team(void){
+Team::Team(Parameters x){
+    p = x;
     // Make a vector of the appropriate length for storing things.
     vector<double> temp(p.max_iter/(double)p.n_agents, 0.0);
     best_solution = temp;
@@ -11,7 +12,7 @@ Team::Team(void){
 void Team::new_start(void){
     // Create agent list
     for(int i=0; i<p.n_agents; i++){
-        Agent a(i);
+        Agent a(i, p);
         agent_list.push_back(a);
     }
 

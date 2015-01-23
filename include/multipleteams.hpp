@@ -13,7 +13,7 @@
 class MultipleTeams {
 public:
     //// Functions
-    MultipleTeams(void); // A function to construct the thing.
+    MultipleTeams(string file_name); // A function to construct the thing from file
     double solve(void);  // A function to solve the problem.
 
     //// Variables
