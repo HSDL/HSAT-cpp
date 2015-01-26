@@ -196,3 +196,103 @@ double stdev(deque<double> x) {
 
     return sqrt(s/x.size());
 }
+
+// Compute the x value fo the optimium of a linear regression
+double quad_max(vector<double> x, vector<double> y){
+    // Initialize things
+    vector<double> Y(4, 0);
+    vector<vector<double>> A(3, Y);
+    double n = 0;
+    double x1 = 0;
+    double x2 = 0;
+    double x3 = 0;
+    double x4 = 0;
+    double y1 = 0;
+    double yx1 = 0;
+    double yx2 = 0;
+
+    // Calculate some sums that will be necessary
+    for(int i=0; i < x.size(); i++) {
+        n += 1;
+        x1 += x[i];
+        x2 += x[i]*x[i];
+        x3 += x[i]*x[i]*x[i];
+        x4 += x[i]*x[i]*x[i]*x[i];
+        y1 += y[i];
+        yx1 += y[i]*x[i];
+        yx2 += y[i]*x[i]*x[i];
+    }
+
+    // Make a matrix
+    A[0][0] = n;
+    A[1][0] = x1;
+    A[0][1] = x1;
+    A[0][2] = x2;
+    A[1][1] = x2;
+    A[2][0] = x2;
+    A[1][2] = x3;
+    A[2][1] = x3;
+    A[2][2] = x4;
+    A[0][3] = y1;
+    A[1][3] = yx1;
+    A[2][3] = yx2;
+
+    n = 3;
+
+    for (int i=0; i<n; i++) {
+        // Search for maximum in this column
+        double max_elem = abs(A[i][i]);
+        int max_row = i;
+        for (int k=i+1; k<n; k++) {
+            if (abs(A[k][i]) > max_elem) {
+                max_elem = abs(A[k][i]);
+                max_row = k;
+            }
+        }
+
+        // Swap maximum row with current row (column by column)
+        for (int k=i; k<n+1;k++) {
+            double temp = A[max_row][k];
+            A[max_row][k] = A[i][k];
+            A[i][k] = temp;
+        }
+
+        // Make all rows below this one 0 in current column
+        for (int k=i+1; k<n; k++) {
+            double c = -A[k][i]/A[i][i];
+            for (int j=i; j<n+1; j++) {
+                if (i==j) {
+                    A[k][j] = 0;
+                } else {
+                    A[k][j] += c * A[i][j];
+                }
+            }
+        }
+    }
+
+    // Solve equation Ax=b for an upper triangular matrix A
+    vector<double> xx(n);
+    for (int i=n-1; i>=0; i--) {
+        xx[i] = A[i][n]/A[i][i];
+        for (int k=i-1;k>=0; k--) {
+            A[k][n] -= A[k][i] * xx[i];
+        }
+    }
+
+    // Check to make sure the equation is concave up
+    if(xx[2] > 0){
+        return -xx[1]/(2*xx[2]);
+    } else {
+        double x_min = vector_min(x);
+        double x_max = vector_max(x);
+
+        if ((xx[0] + x_min*xx[1] +x_min*x_min*xx[2]) >
+                (xx[0] + x_max*xx[1] +x_max*x_max*xx[2]) ) {
+            return x_max;
+        } else {
+            return x_min;
+        }
+
+    }
+
+}

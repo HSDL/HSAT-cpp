@@ -1,7 +1,9 @@
 #include "../include/metaoptim.hpp"
 
+// Null initializer for search
+Search::Search(){}
 
-PatternSearch::PatternSearch(string file_name){
+void Search::parse_param_file(string file_name){
     // Set the parameters to their current values in the setup file
     p_best.set_from_file(file_name);
 
@@ -30,6 +32,10 @@ PatternSearch::PatternSearch(string file_name){
             step_sizes.push_back(0.4*temp);
         }
     }
+}
+
+PatternSearch::PatternSearch(string file_name){
+    parse_param_file(file_name);
 }
 
 void PatternSearch::solve(int max_iter){
@@ -94,32 +100,37 @@ void PatternSearch::solve(int max_iter){
 }
 
 UnivariateSearch::UnivariateSearch(string file_name){
-    // Set the parameters to their current values in the setup file
-    p_best.set_from_file(file_name);
+    parse_param_file(file_name);
+}
 
-    // Step through the setup file and build parameter lists
-    ifstream inputFile(file_name);
-    string line;
-    string name;
-    double lower_limit;
-    double upper_limit;
-    double temp;
-    bool indicator;
+void UnivariateSearch::solve(int max_iter){
+    // Define a few initial things
+    current_iteration = 0;
+    double new_val = 0;
+    Parameters p_current;
+    vector<double> X;
+    vector<double> Y;
 
-    while (getline(inputFile, line))
-    {
-        // Read a line
-        istringstream ss(line);
-        ss >> name >> temp >> indicator;
+    // Do some iterations, bro. Get mad optimized.
+    while(current_iteration < max_iter) {
+        // Within each iteration, step in each direction
+        for (int i = 0; i < var_name.size(); i++) {
+            for (int j = 0; j < p_best.n_reps; j++){
+                // Draw a random variable in the param range
+                new_val = uniform(var_vals[i]+step_sizes[i], var_vals[i]-step_sizes[i]);
+                X.push_back(new_val);
 
-        if(indicator) {
-            ss >> lower_limit;
-            lower_lims.push_back(lower_limit);
-            ss >> upper_limit;
-            upper_lims.push_back(upper_limit);
-            var_name.push_back(name);
-            var_vals.push_back(temp);
-            step_sizes.push_back(0.4*temp);
+                // Push that variable into the
+                p_current = p_best;
+                p_current.set_from_pair(var_name[i], new_val);
+
+                // Run a team with that value
+                Team T(p_current);
+                T.new_start();
+                T.solve();
+                Y.push_back(T.best_solution.back());
+            }
+            // Now, performn regression with Y and X
         }
     }
 }

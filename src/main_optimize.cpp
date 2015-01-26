@@ -1,5 +1,6 @@
 #include "../include/parameters.hpp"
 #include "../include/metaoptim.hpp"
+#include "../include/utils.hpp"
 
 int main(int argc, char *argv[]){
 
@@ -7,6 +8,7 @@ int main(int argc, char *argv[]){
     PatternSearch PS(argv[1]);
 
     // Solve it all
-    PS.solve(20);
+     PS.solve(15);
+
     return 0;
 }
