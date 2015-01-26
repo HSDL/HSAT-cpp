@@ -1,12 +1,12 @@
 FUNC    griewank    0
-DIMS    10          0
+DIMS    30          0
 UBND    10          0
 LBND    -10         0
 ADAPT   1           0
 INTER   1           0
-NREPS   10          0
-MAX_IT  10000       0
-NAGENTS 10          1
-TINIT   0.1         1
-DELTA   0.0001      1
-L_HIST  10          1
+NREPS   30          0
+MAX_IT  30000       0
+NAGENTS 11          1   1   100
+TINIT   0.013       1   0   100
+DELTA   6.48e-06    1   0   100
+L_HIST  27          1   5   100

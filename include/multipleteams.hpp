@@ -13,6 +13,7 @@
 class MultipleTeams {
 public:
     //// Functions
+    MultipleTeams(Parameters x); // A function to construct the thing from an object
     MultipleTeams(string file_name); // A function to construct the thing from file
     double solve(void);  // A function to solve the problem.
 
