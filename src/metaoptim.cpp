@@ -27,7 +27,25 @@ PatternSearch::PatternSearch(string file_name){
 }
 
 void PatternSearch::solve(int max_iter){
+    current_iteration = 0;
+    cout << "\nBeginning Optimization Routine" << endl;
+    while(current_iteration < max_iter){
+        // This variable will keep track of whether or not an improvement has been made
+        bool IMPROVED = false;
+        cout << "\tIteration " << current_iteration << endl;
+        for(int i=1; i<var_list.size(); i++){
+            for(int j=-1; j<2; j+=2){
+                cout << "\t\tTrying " << var_list[i] <<"\t= "<< showpos << j*step_sizes[i] << noshowpos << endl;
+            }
+        }
 
+        // If no improvement, update the values
+        if(!IMPROVED){
+            for(int i=0; i<step_sizes.size(); i++){
+                step_sizes[i] /= 2.0;
+            }
+        }
 
-
+        current_iteration++;
+    }
 }

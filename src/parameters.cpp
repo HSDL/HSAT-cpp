@@ -44,7 +44,7 @@ void Parameters::set_from_file(string file_name) {
         } else if(name == "TINIT") {
             ss >> temp_init;
             cout << "Initial temp:     "<< temp_init << endl;
-        } else if(name == "DELT") {
+        } else if(name == "DELTA") {
             ss >> delt;
             cout << "Temp factor:      "<< delt << endl;
         } else if(name == "L_HIST") {
@@ -71,7 +71,7 @@ void Parameters::set_from_file(string file_name) {
 
 //// Sets parameters based on a vector
 void Parameters::set_from_pair(string name, double x) {
-    if(name == "DELT") {
+    if(name == "DELTA") {
         delt = x;
     } else if(name == "L_HIST"){
         history_length =static_cast <int> (x);
