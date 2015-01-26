@@ -1,7 +1,5 @@
 #include "../include/utils.hpp"
-#include "../include/parameters.hpp"
 #include "../include/multipleteams.hpp"
-
 
 int main(int argc, char *argv[]) {
 
@@ -13,5 +11,5 @@ int main(int argc, char *argv[]) {
     // Save results to file
     save_to_file(argv[2], MT.best_solution);
 
-    return 1;
+    return 0;
 }

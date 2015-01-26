@@ -1,9 +1,7 @@
 #include "../include/metaoptim.hpp"
 
 
-PatternSearch::PatternSearch(void){}
-
-void PatternSearch::set_from_file(string file_name){
+PatternSearch::PatternSearch(string file_name){
     // Set the parameters to their current values in the setup file
     p.set_from_file(file_name);
 
@@ -29,5 +27,7 @@ void PatternSearch::set_from_file(string file_name){
 }
 
 void PatternSearch::solve(int max_iter){
-    print(max_iter);
+
+
+
 }

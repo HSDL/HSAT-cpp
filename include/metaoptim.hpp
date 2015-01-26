@@ -14,8 +14,7 @@ using namespace std;
 class PatternSearch {
 public:
     //// Functions
-    PatternSearch(void); // A function to construct the thing.
-    void set_from_file(string file_name);
+    PatternSearch(string file_name); // A function to construct the thing.
     void solve(int max_iter);  // A function to solve the problem.
     
     //// Variables
