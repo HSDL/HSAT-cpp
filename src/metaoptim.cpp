@@ -50,7 +50,7 @@ void PatternSearch::solve(int max_iter){
         IMPROVED = false;
         cout << "\tIteration " << current_iteration << endl;
         for(int i=0; i<var_name.size(); i++){
-            for(int j=-1; j<2; j+=2){
+            for(int j=1; j>-2; j-=2){
                 // Modify the list of parameters
                 p_current = p_best;
                 new_val = var_vals[i] + j*step_sizes[i];
@@ -77,18 +77,49 @@ void PatternSearch::solve(int max_iter){
                     p_best = p_current;
                     IMPROVED = true;
                     i = 100000;
-                    j = 100000;
+                    j = -100000;
                 }
             }
         }
 
         // If no improvement, update the stepsize values
-        cout << "\t\tUpdating stepsizes" << endl;
         if(!IMPROVED){
+            cout << "\t\tUpdating stepsizes" << endl;
             for(int i=0; i<step_sizes.size(); i++){
                 step_sizes[i] /= 2.0;
             }
         }
         current_iteration++;
+    }
+}
+
+UnivariateSearch::UnivariateSearch(string file_name){
+    // Set the parameters to their current values in the setup file
+    p_best.set_from_file(file_name);
+
+    // Step through the setup file and build parameter lists
+    ifstream inputFile(file_name);
+    string line;
+    string name;
+    double lower_limit;
+    double upper_limit;
+    double temp;
+    bool indicator;
+
+    while (getline(inputFile, line))
+    {
+        // Read a line
+        istringstream ss(line);
+        ss >> name >> temp >> indicator;
+
+        if(indicator) {
+            ss >> lower_limit;
+            lower_lims.push_back(lower_limit);
+            ss >> upper_limit;
+            upper_lims.push_back(upper_limit);
+            var_name.push_back(name);
+            var_vals.push_back(temp);
+            step_sizes.push_back(0.4*temp);
+        }
     }
 }

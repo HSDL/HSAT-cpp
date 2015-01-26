@@ -4,7 +4,7 @@ UBND    10          0
 LBND    -10         0
 ADAPT   1           0
 INTER   1           0
-NREPS   30          0
+NREPS   100         0
 MAX_IT  30000       0
 NAGENTS 11          1   1   100
 TINIT   0.013       1   0   100

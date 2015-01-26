@@ -7,6 +7,6 @@ int main(int argc, char *argv[]){
     PatternSearch PS(argv[1]);
 
     // Solve it all
-    PS.solve(5);
+    PS.solve(20);
     return 0;
 }
