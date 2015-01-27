@@ -134,13 +134,18 @@ void UnivariateSearch::solve(int max_iter){
     current_iteration = 0;
     double new_val = 0;
     Parameters p_current;
-    vector<double> X;
-    vector<double> Y;
+    cout << "\nBeginning Optimization Routine" << endl;
 
     // Do some iterations, bro. Get mad optimized.
     while(current_iteration < max_iter) {
+        cout << "\tIteration " << current_iteration << endl;
         // Within each iteration, step in each direction
         for (int i = 0; i < var_name.size(); i++) {
+            cout << "\t\tComputing " << var_name[i] ;
+
+            // Initialize vectors for regression
+            vector<double> X;
+            vector<double> Y;
             for (int j = 0; j < p_best.n_reps; j++){
                 // Draw a random variable in the param range
                 new_val = uniform(var_vals[i]+step_sizes[i], var_vals[i]-step_sizes[i]);
@@ -156,7 +161,15 @@ void UnivariateSearch::solve(int max_iter){
                 T.solve();
                 Y.push_back(T.best_solution.back());
             }
-            // Now, performn regression with Y and X
+            // Now, perform regression with Y and X
+            new_val = quad_max(X, Y);
+            p_best.set_from_pair(var_name[i], new_val);
+            cout << "\t= " << new_val << endl;
         }
+        // Halve the step-sizes
+        for(int i=0; i<step_sizes.size(); i++){
+            step_sizes[i] /= 2.0;
+        }
+        current_iteration++;
     }
 }
