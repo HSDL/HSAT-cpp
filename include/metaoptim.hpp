@@ -15,6 +15,7 @@ class Search {
 public:
     Search();
     void parse_param_file(string file_name);
+    void save_settings(string file_name);
 
     //// Variables
     Parameters p_best;       // The parameters of the simulation

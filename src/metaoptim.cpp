@@ -34,6 +34,32 @@ void Search::parse_param_file(string file_name){
     }
 }
 
+
+void Search::save_settings(string file_name){
+    // Open a file stream
+    ofstream myfile;
+
+    // Open a file on that file stream
+    myfile.open(file_name);
+
+    // Print a file with appropriate data
+    myfile << "FUNC    " << p_best.function << endl;
+    myfile << "NAGENTS " << p_best.n_agents << endl;
+    myfile << "ADAPT   " << p_best.adaptive << endl;
+    myfile << "INTER   " << p_best.interacting << endl;
+    myfile << "TINIT   " << p_best.temp_init << endl;
+    myfile << "DELT    " << p_best.delt << endl;
+    myfile << "L_HIST  " << p_best.history_length << endl;
+    myfile << "NREPS   " << p_best.n_reps << endl;
+    myfile << "MAX_IT  " << p_best.max_iter << endl;
+    myfile << "DIMS    " << p_best.D << endl;
+    myfile << "UBND    " << p_best.ub << endl;
+    myfile << "LBND    " << p_best.lb << endl;
+
+    myfile.close();
+}
+
+
 PatternSearch::PatternSearch(string file_name){
     parse_param_file(file_name);
 }
