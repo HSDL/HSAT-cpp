@@ -6,3 +6,4 @@ data/*
 results/*
 scripts/*
 build/*
+test/output*

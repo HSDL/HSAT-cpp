@@ -60,7 +60,9 @@ double stdev(deque<double> x);
 // Compute standard deviation of a list
 double stdev(deque<double> x);
 
-// Compute the x value fo the optimium of a linear regression
+// Compute the x value for the optimium of a linear regression
 double quad_max(vector<double> x, vector<double> y);
+
+//
 
 #endif
