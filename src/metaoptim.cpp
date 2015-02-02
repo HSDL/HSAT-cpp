@@ -166,9 +166,10 @@ void UnivariateSearch::solve(int max_iter){
 
             }
             // Now, perform regression with Y and X
-            new_val = quad_max(X, Y);
-            p_best.set_from_pair(var_name[i], new_val);
-            cout << "\t= " << new_val << endl;
+            vector<double> quad_res;
+            quad_res = quad_max(X, Y);
+            p_best.set_from_pair(var_name[i], quad_res[0]);
+            cout << "\t= " << new_val << ", fx = "<< quad_res[1] << endl;
 
             if (new_val == vector_min(X) || new_val == vector_max(X)){
                 EDGE_SOLUTION = true;

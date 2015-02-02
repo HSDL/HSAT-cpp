@@ -1,5 +1,7 @@
 #include "../include/utils.hpp"
 
+#define PI 3.141592653589793
+
 //// Define the Griewank function
 double griewank(vector<double> x){
     // Initialize a couple variable for sums
@@ -23,7 +25,16 @@ double ackley(vector<double> x){
 
 //// Define the Rastigrin function
 double rastigrin(vector<double> x){
-    return griewank(x);
+    // Initialize a couple variable for sums
+    double fx = 0;
+
+    // Step through every dimensions and do a thing
+    for(int i=0; i < x.size(); i++){
+        fx += x[i]*x[i] - 10*cos(2*PI*x[i]) + 10;
+    }
+
+    // Return a sum of sums
+    return fx;
 }
 
 //// This returns a uniform double between upper and lower bounds
@@ -198,7 +209,7 @@ double stdev(deque<double> x) {
 }
 
 // Compute the x value fo the optimium of a linear regression
-double quad_max(vector<double> x, vector<double> y){
+vector<double> quad_max(vector<double> x, vector<double> y){
     // Initialize things
     vector<double> Y(4, 0);
     vector<vector<double>> A(3, Y);
@@ -280,19 +291,26 @@ double quad_max(vector<double> x, vector<double> y){
     }
 
     // Check to make sure the equation is concave up
+    double x_loc;
     if(xx[2] > 0){
-        return -xx[1]/(2*xx[2]);
+        x_loc = -xx[1]/(2*xx[2]);
     } else {
         double x_min = vector_min(x);
         double x_max = vector_max(x);
 
         if ((xx[0] + x_min*xx[1] +x_min*x_min*xx[2]) >
                 (xx[0] + x_max*xx[1] +x_max*x_max*xx[2]) ) {
-            return x_max;
+            x_loc = x_max;
         } else {
-            return x_min;
+            x_loc = x_min;
         }
-
     }
+
+    double fx = xx[0] + x_loc*xx[1] +x_loc*x_loc*xx[2];
+    vector<double> results;
+    results.push_back(x_loc);
+    results.push_back(fx);
+
+    return results;
 
 }

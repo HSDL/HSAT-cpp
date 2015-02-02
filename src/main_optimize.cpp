@@ -7,7 +7,7 @@ int main(int argc, char *argv[]){
     UnivariateSearch US(argv[1]);
 
     // Solve it all
-    US.solve(5);
+    US.solve(10);
 
     // Output the final solution set to a file defined by argv2
     US.save_settings(argv[2]);

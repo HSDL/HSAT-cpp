@@ -37,7 +37,7 @@ void Agent::new_start(void){
 }
 
 //// Generated a candidate solution using Cauchy distribution.
-vector<double> Agent::candidate_solution(){
+vector<double> Agent::candidate_solution(void){
     // Make some variable for use in this function
     vector<double> candidate; // stores the candidate solution
     vector<double> urv;       // A uniform random vector
@@ -116,24 +116,66 @@ void Agent::iterate(int iter){
     }
 
     //Update the temperature
-    update_temp();
+    update_temp(iter);
 }
 
 //// Updates temperature using simple stretched Cauchy schedule.
-void Agent::update_temp(void){
-    if(p.adaptive){
-        // Update the quality history
-        history.push_back(fx_current);
+void Agent::update_temp(int iter){
+    // The logic for this function can be confusing. If history_length
+    // is positive, a sliding approach is used. If not, intermittent
+    // temperature updates are used.
+    // IF history_length IS POSITIVE
+    //    IF ADAPTIVE
+    //        Update Triki with sliding window
+    //    ELSE
+    //        Update Cauchy
+    // ELSE
+    //    IF ADAPTIVE
+    //        Push temperature into history deque
+    //        IF its time to update
+    //            Update Triki with isothermal std.
+    //            Clear history deque
+    //    ELSE
+    //        IF its time to update
+    //            Update Cauchy temperature
 
-        // If the quality history is too long, pop one out and calculate the update
-        if(history.size() > p.history_length){
-            history.pop_front();
-            double triki_update = (1 - p.delt*Ti/pow(stdev(history), 2));
-            if(triki_update > 0){
-                Ti *= triki_update;
+    if(p.history_length > 0) {
+        if (p.adaptive) {
+            // Update the quality history
+            history.push_back(fx_current);
+
+            // If the quality history is too long, pop one out and calculate the update
+            if (history.size() > p.history_length) {
+                history.pop_front();
+                double triki_update = (1 - p.delt * Ti / pow(stdev(history), 2));
+                if (triki_update > 0) {
+                    Ti *= triki_update;
+                }
             }
+        } else {
+            Ti = p.temp_init / (1 + p.delt * (static_cast <double> (iteration_number)));
         }
     } else {
-        Ti = p.temp_init/(1 + p.delt*(static_cast <double> (iteration_number)));
+        bool UPDATE = false;
+        if(iter % p.history_length == 0) {
+            UPDATE = true;
+        }
+        if (p.adaptive) {
+            // Update the quality history
+            history.push_back(fx_current);
+            // If its time to update, update teh temperature and clear the cache
+            if(UPDATE){
+                double triki_update = (1 - p.delt * Ti / pow(stdev(history), 2));
+                if (triki_update > 0) {
+                    Ti *= triki_update;
+                }
+                history.clear();
+            }
+
+        } else {
+            if(UPDATE){
+                Ti = p.temp_init / (1 + p.delt * (static_cast <double> (iteration_number)));
+            }
+        }
     }
 }
