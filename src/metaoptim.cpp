@@ -135,6 +135,7 @@ void UnivariateSearch::solve(int max_iter){
     current_iteration = 0;
     double new_val = 0;
     bool EDGE_SOLUTION;
+    vector<double> quad_res;
     Parameters p_current;
     cout << "\nBeginning Optimization Routine" << endl;
 
@@ -165,15 +166,16 @@ void UnivariateSearch::solve(int max_iter){
                 Y.push_back(T.best_solution.back());
 
             }
+
             // Now, perform regression with Y and X
-            vector<double> quad_res;
             quad_res = quad_max(X, Y);
             p_best.set_from_pair(var_name[i], quad_res[0]);
-            cout << "\t= " << new_val << ", fx = "<< quad_res[1] << endl;
-
-            if (new_val == vector_min(X) || new_val == vector_max(X)){
+            var_vals[i] = quad_res[0];
+            if (quad_res[0] == vector_min(X) || quad_res[0] == vector_max(X)){
                 EDGE_SOLUTION = true;
             }
+
+            cout << "\t= " << quad_res[0] << ", mean = " << mean(Y) << ", fx = "<< quad_res[1] << ", "<< EDGE_SOLUTION << endl;
         }
         // Halve the step-sizes
         if(!EDGE_SOLUTION) {

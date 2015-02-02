@@ -20,7 +20,20 @@ double griewank(vector<double> x){
 
 //// Define the Ackley function
 double ackley(vector<double> x){
-    return griewank(x);
+    // Initialize a couple variable for sums
+    double fx1 = 0;
+    double fx2 = 0;
+    int D = x.size();
+
+    // Step through every dimensions and do a thing
+    for(int i=0; i < D; i++){
+        fx1 += x[i]*x[i];
+        fx2 *= cos(x[i]/sqrt(static_cast <double> (i+1)));
+    }
+
+    // Return a sum of sums
+    return -20*exp(-0.2*sqrt(fx1/D)) - exp(fx2/D) + 20 + exp(1);
+
 }
 
 //// Define the Rastigrin function
