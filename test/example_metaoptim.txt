@@ -6,7 +6,7 @@ ADAPT   1           0
 INTER   1           0
 NREPS   100         0
 MAX_IT  30000       0
-TINIT   0.1         1   0   100
-DELTA   1e-06       1   0   100
-NAGENTS 10          1   1   100
-L_HIST  25          1   5   100
+TINIT   0.02        1   1e-10   100
+DELT    1e-06       1   1e-15   100
+NAGENTS 10          1   1       100
+L_HIST  25          1   5       100

@@ -8,12 +8,9 @@ int main(int argc, char *argv[]){
     UnivariateSearch US(argv[1]);
 
     // Solve it all
-//    US.solve(5);
+    US.solve(5);
     // Output the final solution set to a file defined by argv2
-//    US.save_settings(argv[2]);
-
-    vector<double> temp = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-    print(ackley(temp));
+    US.save_settings(argv[2]);
 
     return 0;
 }

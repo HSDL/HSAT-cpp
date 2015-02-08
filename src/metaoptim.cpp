@@ -136,6 +136,10 @@ void UnivariateSearch::solve(int max_iter){
     double new_val = 0;
     bool EDGE_SOLUTION;
     vector<double> quad_res;
+    vector<double> X;
+    vector<double> Y;
+    double temp_ub;
+    double temp_lb;
     Parameters p_current;
     cout << "\nBeginning Optimization Routine" << endl;
 
@@ -148,11 +152,11 @@ void UnivariateSearch::solve(int max_iter){
             cout << "\t\tComputing " << var_name[i] ;
 
             // Initialize vectors for regression
-            vector<double> X;
-            vector<double> Y;
             for (int j = 0; j < p_best.n_reps; j++){
                 // Draw a random variable in the param range
-                new_val = uniform(var_vals[i]+step_sizes[i], var_vals[i]-step_sizes[i]);
+                temp_ub = min(var_vals[i]+step_sizes[i], upper_lims[i]);
+                temp_lb = max(var_vals[i]-step_sizes[i], lower_lims[i]);
+                new_val = uniform(temp_ub, temp_lb);
                 X.push_back(new_val);
 
                 // Push that variable into the
@@ -169,13 +173,22 @@ void UnivariateSearch::solve(int max_iter){
 
             // Now, perform regression with Y and X
             quad_res = quad_max(X, Y);
-            p_best.set_from_pair(var_name[i], quad_res[0]);
-            var_vals[i] = quad_res[0];
+            if(quad_res[3] > 0.01) {
+                p_best.set_from_pair(var_name[i], quad_res[0]);
+                var_vals[i] = quad_res[0];
+            }
             if (quad_res[0] == vector_min(X) || quad_res[0] == vector_max(X)){
                 EDGE_SOLUTION = true;
             }
 
-            cout << "\t= " << quad_res[0] << ", mean = " << mean(Y) << ", fx = "<< quad_res[1] << ", "<< EDGE_SOLUTION << endl;
+            cout << "\t= " << quad_res[0]
+                    << ", mean = " << quad_res[2]
+                    << ", fx = "   << quad_res[1]
+                    << ", r2 = "   << quad_res[3]
+                    << ", "        << (quad_res[3] > 0.01) << endl;
+
+            X.clear();
+            Y.clear();
         }
         // Halve the step-sizes
         if(!EDGE_SOLUTION) {

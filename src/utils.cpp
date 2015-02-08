@@ -303,13 +303,14 @@ vector<double> quad_max(vector<double> x, vector<double> y){
         }
     }
 
-    // Check to make sure the equation is concave up
     double x_loc;
+    double x_min = vector_min(x);
+    double x_max = vector_max(x);
+
+    // Check to make sure the equation is concave up
     if(xx[2] > 0){
         x_loc = -xx[1]/(2*xx[2]);
     } else {
-        double x_min = vector_min(x);
-        double x_max = vector_max(x);
 
         if ((xx[0] + x_min*xx[1] +x_min*x_min*xx[2]) >
                 (xx[0] + x_max*xx[1] +x_max*x_max*xx[2]) ) {
@@ -319,10 +320,24 @@ vector<double> quad_max(vector<double> x, vector<double> y){
         }
     }
 
-    double fx = xx[0] + x_loc*xx[1] +x_loc*x_loc*xx[2];
+    // Check to make sure the solution is in teh trust region
+    x_loc = min(x_loc, x_max);
+    x_loc = max(x_loc, x_min);
+
+    // Compute the r-squared value
+    double sse_mean = 0;
+    double sse_reg = 0;
+    double my = mean(y);
+    for(int i=0; i < y.size(); i++){
+        sse_mean += pow(y[i] - my, 2);
+        sse_reg  += pow(xx[0] + x[i]*xx[1] +x[i]*x[i]*xx[2] - y[i], 2);
+    }
+
     vector<double> results;
     results.push_back(x_loc);
-    results.push_back(fx);
+    results.push_back(xx[0] + x_loc*xx[1] +x_loc*x_loc*xx[2]);
+    results.push_back(my);
+    results.push_back(pow(1.0 - sse_reg/sse_mean, 2.0));
 
     return results;
 
