@@ -27,12 +27,12 @@ double ackley(vector<double> x){
 
     // Step through every dimensions and do a thing
     for(int i=0; i < D; i++){
-        fx1 += x[i]*x[i];
-        fx2 *= cos(x[i]/sqrt(static_cast <double> (i+1)));
+        fx1 += x[i];
+        fx2 += cos(2*PI*x[i]);
     }
 
     // Return a sum of sums
-    return -20*exp(-0.2*sqrt(fx1/D)) - exp(fx2/D) + 20 + exp(1);
+    return -20.0*exp(-0.2*sqrt(fx1/D)) - exp(fx2/D) + 20.0 + exp(1.0);
 
 }
 

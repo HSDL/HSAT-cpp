@@ -2,7 +2,7 @@
 #include "../include/utils.hpp"
 
 // Null initializer for search
-Search::Search(){}
+Search::Search(){seed_time();}
 
 void Search::parse_param_file(string file_name){
     // Set the parameters to their current values in the setup file

@@ -1,4 +1,4 @@
-FUNC    rastigrin   0
+FUNC    ackley      0
 DIMS    30          0
 UBND    10          0
 LBND    -10         0
@@ -6,7 +6,7 @@ ADAPT   1           0
 INTER   1           0
 NREPS   100         0
 MAX_IT  30000       0
-TINIT   0.01        1   0   100
+TINIT   0.1         1   0   100
 DELTA   1e-06       1   0   100
 NAGENTS 10          1   1   100
-L_HIST  10          1   5   100
+L_HIST  25          1   5   100
