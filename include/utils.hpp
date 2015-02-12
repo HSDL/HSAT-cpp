@@ -63,6 +63,7 @@ double stdev(deque<double> x);
 // Compute the x value for the optimium of a linear regression
 vector<double> quad_max(vector<double> x, vector<double> y);
 
-//
+// Computes the pearson-r value between two vectors
+vector<double> pearsonr(vector<double> x, vector<double> y);
 
 #endif

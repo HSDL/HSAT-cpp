@@ -27,7 +27,7 @@ double ackley(vector<double> x){
 
     // Step through every dimensions and do a thing
     for(int i=0; i < D; i++){
-        fx1 += x[i];
+        fx1 += x[i]*x[i];
         fx2 += cos(2*PI*x[i]);
     }
 
@@ -337,7 +337,7 @@ vector<double> quad_max(vector<double> x, vector<double> y){
     results.push_back(x_loc);
     results.push_back(xx[0] + x_loc*xx[1] +x_loc*x_loc*xx[2]);
     results.push_back(my);
-    results.push_back(pow(1.0 - sse_reg/sse_mean, 2.0));
+    results.push_back(1.0 - sse_reg/sse_mean);
 
     return results;
 

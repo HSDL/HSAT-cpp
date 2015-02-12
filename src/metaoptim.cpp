@@ -195,6 +195,7 @@ void UnivariateSearch::solve(int max_iter){
             for (int i = 0; i < step_sizes.size(); i++) {
                 step_sizes[i] /= 2.0;
             }
+            cout << "\t\t" << "Updating step sizes." << endl;
         }
         current_iteration++;
     }
