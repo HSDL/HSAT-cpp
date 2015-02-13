@@ -27,6 +27,7 @@ Agent::Agent(int ID, Parameters x){
 
 //// A function that selects a random starting point, and pushes it to other agents.
 void Agent::new_start(void){
+
     // Selecta  random starting point and evaluate it
     x_current = random_vector(p.D, p.ub, p.lb);
     fx_current = p.obj(x_current);

@@ -10,6 +10,10 @@ Team::Team(Parameters x){
 
 //// Give the team a new start
 void Team::new_start(void){
+    // Reset the vector for sharing the best solutions
+    agent_list[0].all_fx_current.clear();
+    agent_list[0].all_xx_current.clear();
+
     // Create agent list
     for(int i=0; i<p.n_agents; i++){
         Agent a(i, p);
@@ -48,4 +52,5 @@ void Team::solve(void){
             best_solution[i] = best_solution[i-1];
         }
     }
+//    cout << best_solution[0] << "\t" << best_solution.back() << endl;
 }

@@ -189,7 +189,6 @@ void UnivariateSearch::solve(int max_iter){
                 T.new_start();
                 T.solve();
                 Y.push_back(T.best_solution.back());
-
             }
 
             // Now, perform regression with Y and X

@@ -223,6 +223,7 @@ double stdev(deque<double> x) {
 
 // Compute the x value fo the optimium of a linear regression
 vector<double> quad_max(vector<double> x, vector<double> y){
+
     // Initialize things
     vector<double> Y(4, 0);
     vector<vector<double>> A(3, Y);
