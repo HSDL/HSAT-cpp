@@ -45,7 +45,6 @@ double MultipleTeams::solve(void){
         T.solve();
 
         // Save results
-//        cdf[i] = vector_min(Agent().all_fx_current);
         cdf[i] = T.best_solution.back();
         best_solution[i] = T.best_solution;
     }

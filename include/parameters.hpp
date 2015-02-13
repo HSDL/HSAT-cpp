@@ -31,6 +31,8 @@ public:
     Parameters(void);
     void set_from_file(string file_name);
     void set_from_pair(string name, double x);
+    void print_params(void);
+    double get_from_name(string name);
     double obj(vector<double> x);
 
 private:

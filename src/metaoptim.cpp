@@ -62,6 +62,7 @@ void Search::save_settings(string file_name){
 
 
 PatternSearch::PatternSearch(string file_name){
+    seed_time();
     parse_param_file(file_name);
 }
 
@@ -127,6 +128,7 @@ void PatternSearch::solve(int max_iter){
 }
 
 UnivariateSearch::UnivariateSearch(string file_name){
+    seed_time();
     parse_param_file(file_name);
 }
 
@@ -172,11 +174,15 @@ void UnivariateSearch::solve(int max_iter){
 
                 // Define a new value
                 new_val = uniform(temp_ub, temp_lb);
-                X.push_back(new_val);
 
                 // Create a parameter set with the new value
                 p_current = p_best;
                 p_current.set_from_pair(var_name[i], new_val);
+//                p_current.print_params();
+
+                // Save the new value (this takes advantage of rounding when pushed to parameter set
+                // X.push_back(new_val);
+                X.push_back(p_current.get_from_name(var_name[i]));
 
                 // Run a team with that value
                 Team T(p_current);
@@ -190,7 +196,8 @@ void UnivariateSearch::solve(int max_iter){
             quad_res = quad_max(X, Y);
             if(quad_res[3] > 0.01) {
                 p_best.set_from_pair(var_name[i], quad_res[0]);
-                var_vals[i] = quad_res[0];
+                var_vals[i] = p_best.get_from_name(var_name[i]);
+                // var_vals[i] = quad_res[0];
             }
 
             // Check to see if we're against a non-limiting edge solution
