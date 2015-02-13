@@ -2,10 +2,13 @@
 
 Building using Cmake will produce two binary files:
   1. **HSAT_BENCH**: Will benchmark the algorithm for given inputs. Syntax is:
-```
-HSAT_BENCH input_file.txt output_file.txt
-```
+
+  ```
+  HSAT_BENCH input_file.txt output_file.txt
+  ```
+  
   2. **HSAT_OPTIM**: Will optimize the parameters of the algorithms for given inputs. Syntax is:
-```
-HSAT_BENCH max_iter input_file.txt output_file.txt
-```
+
+  ```
+  HSAT_BENCH max_iter input_file.txt output_file.txt
+  ```
