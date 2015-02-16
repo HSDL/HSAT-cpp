@@ -117,66 +117,69 @@ void Agent::iterate(int iter){
     }
 
     //Update the temperature
-    update_temp(iter);
+    update_temp();
 }
 
 //// Updates temperature using simple stretched Cauchy schedule.
-void Agent::update_temp(int iter){
-    // The logic for this function can be confusing. If history_length
-    // is positive, a sliding approach is used. If not, intermittent
-    // temperature updates are used.
-    // IF history_length IS POSITIVE
-    //    IF ADAPTIVE
-    //        Update Triki with sliding window
-    //    ELSE
-    //        Update Cauchy
-    // ELSE
-    //    IF ADAPTIVE
-    //        Push temperature into history deque
-    //        IF its time to update
-    //            Update Triki with isothermal std.
-    //            Clear history deque
-    //    ELSE
-    //        IF its time to update
-    //            Update Cauchy temperature
+void Agent::update_temp(void) {
 
+    // If the algorithm is adaptive, push back the current quality
+    if (p.adaptive) {
+        // Update the quality history
+        history.push_back(fx_current);
+    }
+
+    // If history_length is greater than 0, use a sliding window for the update
     if(p.history_length > 0) {
         if (p.adaptive) {
-            // Update the quality history
-            history.push_back(fx_current);
-
             // If the quality history is too long, pop one out and calculate the update
             if (history.size() > p.history_length) {
                 history.pop_front();
-                double triki_update = (1 - p.delt * Ti / pow(stdev(history), 2));
-                if (triki_update > 0) {
-                    Ti *= triki_update;
-                }
+                Ti = update_triki();
             }
         } else {
-            Ti = p.temp_init / (1 + p.delt * (static_cast <double> (iteration_number)));
-        }
-    } else {
-        bool UPDATE = false;
-        if(iter % p.history_length == 0) {
-            UPDATE = true;
-        }
-        if (p.adaptive) {
-            // Update the quality history
-            history.push_back(fx_current);
-            // If its time to update, update teh temperature and clear the cache
-            if(UPDATE){
-                double triki_update = (1 - p.delt * Ti / pow(stdev(history), 2));
-                if (triki_update > 0) {
-                    Ti *= triki_update;
-                }
-                history.clear();
-            }
-
-        } else {
-            if(UPDATE){
-                Ti = p.temp_init / (1 + p.delt * (static_cast <double> (iteration_number)));
-            }
+            Ti = update_cauchy();
         }
     }
+
+    // If history length is less than 0, use an absolute stepping scheme
+    if(p.history_length < 0) {
+        bool UPDATE = false;
+
+        // See if its time to compute an update
+        if(iteration_number % p.history_length == 0) {
+            UPDATE = true;
+        }
+
+        // If adaptive adn time to update, update triki and clear the cache
+        // If adaptive adn time to update, update triki and clear the cache
+        if(p.adaptive && UPDATE){
+            Ti = update_triki();
+            history.clear();
+        }
+
+        // If no adaptive, bu time to update, update cauchy.
+        if(!p.adaptive && UPDATE){
+            Ti = update_cauchy();
+        }
+    }
+}
+
+double Agent::update_triki(){
+    double q_std = stdev(history);
+    double update_factor = p.delt * Ti / pow(q_std, 2);
+    if (q_std > 0.0) {
+        if (update_factor > 1.0) {
+            // Update delt and update_factor
+            p.delt /= 2.0;
+            update_factor /= 2.0;
+        }
+        return Ti * (1 - min(update_factor, 1.0));
+    } else {
+        return Ti;
+    }
+}
+
+double Agent::update_cauchy(void){
+     return p.temp_init / (1 + p.delt * (static_cast <double> (iteration_number)));
 }

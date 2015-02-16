@@ -34,7 +34,9 @@ public:
 private:
     //// Functions
     vector<double> candidate_solution(void); // Generated a candidate solution usign Cauchy distribution.
-    void update_temp(int iter);                  // Updates the temperature.
+    void update_temp(void);                  // Updates the temperature.
+    double update_triki(void);
+    double update_cauchy(void);
 };
 
 #endif

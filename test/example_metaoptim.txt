@@ -1,12 +1,12 @@
-FUNC    ackley      0
-DIMS    10          0
-UBND    10          0
-LBND    -10         0
+FUNC   rastigrin   0
+DIMS    30          0
+UBND    5.12          0
+LBND    -5.12         0
 ADAPT   1           0
 INTER   1           0
-NREPS   50          0
-MAX_IT  10000       0
-TINIT   0.1         1   1e-15   100
-DELT    1e-05       1   1e-15   100
+NREPS   100         0
+MAX_IT  30000       0
+TINIT   0.01        1   1e-15   300
+DELT    5e-6        1   1e-15   100
 NAGENTS 10          1   1       100
-L_HIST  10          1   2       100
+L_HIST  50          1   2 100
