@@ -95,6 +95,10 @@ void Agent::iterate(int iter){
     x_cand = candidate_solution();
     fx_cand = p.obj(x_cand);
 
+    if(p.adaptive && p.history_length < 0) {
+        history.push_back(fx_cand);
+    }
+
     // If it is better, accept it
     if(fx_cand < fx_current){
         // Save locally
@@ -116,6 +120,12 @@ void Agent::iterate(int iter){
         }
     }
 
+    if(p.adaptive && p.history_length > 0) {
+        history.push_back(fx_current);
+    }
+
+
+
     //Update the temperature
     update_temp();
 }
@@ -123,11 +133,8 @@ void Agent::iterate(int iter){
 //// Updates temperature using simple stretched Cauchy schedule.
 void Agent::update_temp(void) {
 
-    // If the algorithm is adaptive, push back the current quality
-    if (p.adaptive) {
-        // Update the quality history
-        history.push_back(fx_current);
-    }
+    if(p.n_reps == 1)
+        cout << Ti << ", ";
 
     // If history_length is greater than 0, use a sliding window for the update
     if(p.history_length > 0) {
@@ -151,20 +158,21 @@ void Agent::update_temp(void) {
             UPDATE = true;
         }
 
-        // If adaptive adn time to update, update triki and clear the cache
-        // If adaptive adn time to update, update triki and clear the cache
+        // If adaptive and time to update, update triki and clear the cache
         if(p.adaptive && UPDATE){
             Ti = update_triki();
             history.clear();
         }
 
-        // If no adaptive, bu time to update, update cauchy.
+        // If not adaptive, but time to update, update cauchy.
         if(!p.adaptive && UPDATE){
             Ti = update_cauchy();
         }
     }
 }
 
+
+// This function updates Triki
 double Agent::update_triki(){
     double q_std = stdev(history);
     double update_factor = p.delt * Ti / pow(q_std, 2);
@@ -174,7 +182,12 @@ double Agent::update_triki(){
             p.delt /= 2.0;
             update_factor /= 2.0;
         }
-        return Ti * (1 - min(update_factor, 1.0));
+        if(update_factor > 1.0){
+            return Ti;
+        } else {
+            return Ti * (1 - update_factor);
+        }
+
     } else {
         return Ti;
     }

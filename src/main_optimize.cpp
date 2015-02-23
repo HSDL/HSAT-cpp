@@ -11,7 +11,7 @@ int main(int argc, char *argv[]){
     US.solve(atoi(argv[1]));
 
     // Output the final solution set to a file defined by argv2
-    US.save_settings(argv[3]);
+//    US.save_settings(argv[3]);
 
     return 0;
 }

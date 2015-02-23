@@ -30,7 +30,7 @@ void Search::parse_param_file(string file_name){
             upper_lims.push_back(upper_limit);
             var_name.push_back(name);
             var_vals.push_back(temp);
-            step_sizes.push_back(0.4*temp);
+            step_sizes.push_back(0.25*temp);
         }
     }
 }
@@ -158,7 +158,7 @@ void UnivariateSearch::solve(int max_iter){
         APPROACHING_BOUND = false;
         // Within each iteration, step in each direction
         for (int i = 0; i < var_name.size(); i++) {
-            cout << "\t\tComputing " << var_name[i] ;
+            cout << "\t\tComputing " << var_name[i];
 
             // Draw a random variable in the param range
             temp_ub = min(var_vals[i]+step_sizes[i], upper_lims[i]);
@@ -188,7 +188,7 @@ void UnivariateSearch::solve(int max_iter){
                 Team T(p_current);
                 T.new_start();
                 T.solve();
-                Y.push_back(T.best_solution.back());
+                Y.push_back(log10(T.best_solution.back()));
             }
 
             // Now, perform regression with Y and X
@@ -196,13 +196,11 @@ void UnivariateSearch::solve(int max_iter){
             if(quad_res[3] > 0.01) {
                 p_best.set_from_pair(var_name[i], quad_res[0]);
                 var_vals[i] = p_best.get_from_name(var_name[i]);
-                // var_vals[i] = quad_res[0];
-            }
-
-            // Check to see if we're against a non-limiting edge solution
-            if (quad_res[0] == vector_min(X) || quad_res[0] == vector_max(X)){
-                if (!APPROACHING_BOUND) {
-                    EDGE_SOLUTION = true;
+                // Check to see if we're against a non-limiting edge solution
+                if (quad_res[0] == vector_min(X) || quad_res[0] == vector_max(X)){
+                    if (!APPROACHING_BOUND) {
+                        EDGE_SOLUTION = true;
+                    }
                 }
             }
 
@@ -210,7 +208,8 @@ void UnivariateSearch::solve(int max_iter){
                     << ", mean = " << quad_res[2]
                     << ", fx = "   << quad_res[1]
                     << ", r2 = "   << quad_res[3]
-                    << ", "        << (quad_res[3] > 0.01) << endl;
+                    << ", "        << (quad_res[3] > 0.01)
+                    << ", "        << EDGE_SOLUTION << endl;
 
             X.clear();
             Y.clear();

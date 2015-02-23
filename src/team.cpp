@@ -35,6 +35,9 @@ void Team::iterate(int iter){
     for(int i=0; i<agent_list.size(); i++){
         agent_list[i].iterate(iter);
     }
+    if (p.n_reps == 1){
+        cout << endl;
+    }
 }
 
 //// Solve the team
@@ -52,5 +55,4 @@ void Team::solve(void){
             best_solution[i] = best_solution[i-1];
         }
     }
-//    cout << best_solution[0] << "\t" << best_solution.back() << endl;
 }

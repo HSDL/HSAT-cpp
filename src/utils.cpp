@@ -42,8 +42,9 @@ double rastigrin(vector<double> x){
     double fx = 0;
 
     // Step through every dimensions and do a thing
+    // The funky coefficients scale the function so it falls on a [-10 10] range, instead of [-5.12, 5.12] as usual.
     for(int i=0; i < x.size(); i++){
-        fx += x[i]*x[i] - 10*cos(2*PI*x[i]) + 10;
+        fx += x[i]*x[i]*0.262144 - 10*cos(2*PI*x[i]*0.512) + 10.00;
     }
 
     // Return a sum of sums
