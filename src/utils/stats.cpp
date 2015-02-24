@@ -57,6 +57,7 @@ vector<double> quad_max(vector<double> x, vector<double> y){
     // Initialize things
     vector<double> Y(4, 0);
     vector<vector<double>> A(3, Y);
+    vector<double> xx;
     double n = 0;
     double x1 = 0;
     double x2 = 0;
@@ -92,47 +93,7 @@ vector<double> quad_max(vector<double> x, vector<double> y){
     A[1][3] = yx1;
     A[2][3] = yx2;
 
-    n = 3;
-
-    for (int i=0; i<n; i++) {
-        // Search for maximum in this column
-        double max_elem = abs(A[i][i]);
-        int max_row = i;
-        for (int k=i+1; k<n; k++) {
-            if (abs(A[k][i]) > max_elem) {
-                max_elem = abs(A[k][i]);
-                max_row = k;
-            }
-        }
-
-        // Swap maximum row with current row (column by column)
-        for (int k=i; k<n+1;k++) {
-            double temp = A[max_row][k];
-            A[max_row][k] = A[i][k];
-            A[i][k] = temp;
-        }
-
-        // Make all rows below this one 0 in current column
-        for (int k=i+1; k<n; k++) {
-            double c = -A[k][i]/A[i][i];
-            for (int j=i; j<n+1; j++) {
-                if (i==j) {
-                    A[k][j] = 0;
-                } else {
-                    A[k][j] += c * A[i][j];
-                }
-            }
-        }
-    }
-
-    // Solve equation Ax=b for an upper triangular matrix A
-    vector<double> xx(n);
-    for (int i=n-1; i>=0; i--) {
-        xx[i] = A[i][n]/A[i][i];
-        for (int k=i-1;k>=0; k--) {
-            A[k][n] -= A[k][i] * xx[i];
-        }
-    }
+    xx = gauss(A);
 
     double x_loc;
     double x_min = vector_min(x);
@@ -172,4 +133,51 @@ vector<double> quad_max(vector<double> x, vector<double> y){
 
     return results;
 
+}
+
+vector<double> gauss(vector< vector<double> > A) {
+    // From http://martin-thoma.com/solving-linear-equations-with-gaussian-elimination/
+
+    int n = static_cast <int> (A.size());
+
+    for (int i=0; i<n; i++) {
+        // Search for maximum in this column
+        double maxEl = abs(A[i][i]);
+        int maxRow = i;
+        for (int k=i+1; k<n; k++) {
+            if (abs(A[k][i]) > maxEl) {
+                maxEl = abs(A[k][i]);
+                maxRow = k;
+            }
+        }
+
+        // Swap maximum row with current row (column by column)
+        for (int k=i; k<n+1;k++) {
+            double tmp = A[maxRow][k];
+            A[maxRow][k] = A[i][k];
+            A[i][k] = tmp;
+        }
+
+        // Make all rows below this one 0 in current column
+        for (int k=i+1; k<n; k++) {
+            double c = -A[k][i]/A[i][i];
+            for (int j=i; j<n+1; j++) {
+                if (i==j) {
+                    A[k][j] = 0;
+                } else {
+                    A[k][j] += c * A[i][j];
+                }
+            }
+        }
+    }
+
+    // Solve equation Ax=b for an upper triangular matrix A
+    vector<double> x(static_cast <unsigned long> (n));
+    for (int i=n-1; i>=0; i--) {
+        x[i] = A[i][n]/A[i][i];
+        for (int k=i-1;k>=0; k--) {
+            A[k][n] -= A[k][i] * x[i];
+        }
+    }
+    return x;
 }

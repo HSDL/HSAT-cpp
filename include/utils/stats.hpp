@@ -28,4 +28,6 @@ double stdev(deque<double> x);
 // Compute the x value for the optimium of a linear regression
 vector<double> quad_max(vector<double> x, vector<double> y);
 
+vector<double> gauss(vector< vector<double> > A);
+
 #endif
