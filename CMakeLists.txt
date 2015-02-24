@@ -14,13 +14,15 @@ set(SOURCE_FILES_BENCH
     include/multipleteams.hpp
     include/utils/objective.hpp
     include/utils/makerandom.hpp
+    include/utils/customprint.hpp
     src/utils.cpp
     src/agent.cpp
     src/parameters.cpp
     src/team.cpp
     src/multipleteams.cpp
     src/utils/objective.cpp
-    src/utils/makerandom.cpp)
+    src/utils/makerandom.cpp
+    src/utils/customprint.cpp)
 
 
 set(SOURCE_FILES_OPTIM
@@ -33,6 +35,7 @@ set(SOURCE_FILES_OPTIM
     include/metaoptim.hpp
     include/utils/objective.hpp
     include/utils/makerandom.hpp
+    include/utils/customprint.hpp
     src/utils.cpp
     src/agent.cpp
     src/parameters.cpp
@@ -40,7 +43,8 @@ set(SOURCE_FILES_OPTIM
     src/multipleteams.cpp
     src/metaoptim.cpp
     src/utils/objective.cpp
-    src/utils/makerandom.cpp)
+    src/utils/makerandom.cpp
+    src/utils/customprint.cpp)
 
 add_executable(HSAT_BENCH ${SOURCE_FILES_BENCH})
 add_executable(HSAT_OPTIM ${SOURCE_FILES_OPTIM})
