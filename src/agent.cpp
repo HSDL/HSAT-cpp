@@ -20,7 +20,7 @@ Agent::Agent(int ID, Parameters x){
     // If you are not the last agent to be instantiated, grow the sharing vectors.
     if(all_fx_current.size() < p.n_agents) {
         all_fx_current.push_back(0.0);
-        vector<double> temp(p.D, 0.0);
+        vector<double> temp(static_cast <unsigned long> (p.D), 0.0);
         all_xx_current.push_back(temp);
     }
 }
@@ -28,7 +28,7 @@ Agent::Agent(int ID, Parameters x){
 //// A function that selects a random starting point, and pushes it to other agents.
 void Agent::new_start(void){
 
-    // Selecta  random starting point and evaluate it
+    // Select a random starting point and evaluate it
     x_current = random_vector(p.D, p.ub, p.lb);
     fx_current = p.obj(x_current);
 

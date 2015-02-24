@@ -13,7 +13,7 @@ void seed_time(void){
 //// Creates a random vector
 vector<double> random_vector(int D, double ub, double lb){
     // Initialize a vector
-    vector<double> x(D, 0.0);
+    vector<double> x(static_cast <unsigned long> (D), 0.0);
 
     // Create the elements in that vector
     for(int i=0; i<D; i++){

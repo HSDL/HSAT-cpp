@@ -23,7 +23,7 @@ double ackley(vector<double> x){
     // Initialize a couple variable for sums
     double fx1 = 0;
     double fx2 = 0;
-    int D = x.size();
+    int D = static_cast <int> (x.size());
 
     // Step through every dimensions and do a thing
     for(int i=0; i < D; i++){
