@@ -27,7 +27,7 @@ public:
 
     //// Accessible everywhere
     static vector<double> all_fx_current;         // Function value of all agents current solutions
-    static vector<vector<double>> all_xx_current; // All agents current solutions
+    static vector< vector<double> > all_xx_current; // All agents current solutions
 
 private:
     //// Functions

@@ -56,7 +56,7 @@ vector<double> quad_max(vector<double> x, vector<double> y){
 
     // Initialize things
     vector<double> Y(4, 0);
-    vector<vector<double>> A(3, Y);
+    vector< vector<double> > A(3, Y);
     vector<double> xx;
     double n = 0;
     double x1 = 0;

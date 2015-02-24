@@ -9,7 +9,7 @@ MultipleTeams::MultipleTeams(Parameters x){
 
     // Define the vectors that we need with the appropriate length
     vector<double> temp1(static_cast <unsigned long> (p.max_iter/(double)p.n_agents), 0.0);
-    vector<vector<double>> temp2(static_cast <unsigned long> (p.n_reps), temp1);
+    vector<vector <double> > temp2(static_cast <unsigned long> (p.n_reps), temp1);
     vector<double> temp3(static_cast <unsigned long> (p.n_reps), 0.0);
 
     best_solution = temp2;
@@ -23,7 +23,7 @@ MultipleTeams::MultipleTeams(string file_name){
 
     // Define the vectors that we need with the appropriate length
     vector<double> temp1(static_cast <unsigned long> (p.max_iter/(double)p.n_agents), 0.0);
-    vector<vector<double>> temp2(static_cast <unsigned long> (p.n_reps), temp1);
+    vector< vector<double> > temp2(static_cast <unsigned long> (p.n_reps), temp1);
     vector<double> temp3(static_cast <unsigned long> (p.n_reps), 0.0);
 
     best_solution = temp2;

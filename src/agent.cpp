@@ -2,7 +2,7 @@
 
 //// Necessary definitions of static vectors for sharing between agents.
 vector<double> Agent::all_fx_current;
-vector<vector<double>> Agent::all_xx_current;
+vector< vector<double> > Agent::all_xx_current;
 
 //// Inline Agent constructor for accessing static vectors
 Agent::Agent(void){}

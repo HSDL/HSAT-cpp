@@ -53,7 +53,7 @@ void save_to_file(string file_path, vector<double> x){
 
 
 //// Save a vector of vectors to file. This happens a lot, actually.
-void save_to_file(string file_path, vector<vector<double>> x){
+void save_to_file(string file_path, vector< vector<double> > x){
     // Open a file stream
     ofstream my_file;
 
