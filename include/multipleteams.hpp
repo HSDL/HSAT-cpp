@@ -2,6 +2,7 @@
 #define MULTIPLETEAMS_HPP
 
 #include "team.hpp"
+#include <algorithm>
 
 class MultipleTeams {
 public:
