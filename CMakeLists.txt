@@ -13,12 +13,14 @@ set(SOURCE_FILES_BENCH
     include/team.hpp
     include/multipleteams.hpp
     include/utils/objective.hpp
+    include/utils/makerandom.hpp
     src/utils.cpp
     src/agent.cpp
     src/parameters.cpp
     src/team.cpp
     src/multipleteams.cpp
-    src/utils/objective.cpp)
+    src/utils/objective.cpp
+    src/utils/makerandom.cpp)
 
 
 set(SOURCE_FILES_OPTIM
@@ -30,13 +32,15 @@ set(SOURCE_FILES_OPTIM
     include/multipleteams.hpp
     include/metaoptim.hpp
     include/utils/objective.hpp
+    include/utils/makerandom.hpp
     src/utils.cpp
     src/agent.cpp
     src/parameters.cpp
     src/team.cpp
     src/multipleteams.cpp
     src/metaoptim.cpp
-    src/utils/objective.cpp)
+    src/utils/objective.cpp
+    src/utils/makerandom.cpp)
 
 add_executable(HSAT_BENCH ${SOURCE_FILES_BENCH})
 add_executable(HSAT_OPTIM ${SOURCE_FILES_OPTIM})

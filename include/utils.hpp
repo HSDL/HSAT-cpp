@@ -13,25 +13,6 @@
 #include <deque>
 
 using namespace std;
-//
-//// Define the Griewank function
-//double griewank(vector<double> x);
-//
-//// Define the Griewank function
-//double ackley(vector<double> x);
-//
-//// Define the Griewank function
-//double rastigrin(vector<double> x);
-
-// Function to return a uniform double
-double uniform(double ub, double lb);
-
-// Function to seed wrt time
-void seed_time(void);
-
-// Function to return a uniform random vector
-vector<double> random_vector(int D, double ub, double lb);
-
 // Functions to print variables
 void print(int x);
 void print(double x);
@@ -48,8 +29,6 @@ double vector_min(vector<double> v);
 void save_to_file(string file_path, vector<double>);
 void save_to_file(string file_path, vector<vector<double>>);
 
-// Weighted random choice function
-int weighted_choice(vector<double> x);
 
 // Compute mean of a vector
 double mean(vector<double> x);

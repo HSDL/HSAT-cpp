@@ -5,9 +5,7 @@
 #include <cmath>
 #include <numeric>
 
-#include "utils.hpp"
 #include "multipleteams.hpp"
-#include "parameters.hpp"
 
 using namespace std;
 

@@ -3,10 +3,10 @@
 
 #include <iostream>
 #include <cmath>
-#include "utils.hpp"
-#include "parameters.hpp"
 #include <list>
 #include <vector>
+#include "parameters.hpp"
+#include "utils/makerandom.hpp"
 
 using namespace std;
 
