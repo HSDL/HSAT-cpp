@@ -13,15 +13,15 @@
 #include <deque>
 
 using namespace std;
-
-// Define the Griewank function
-double griewank(vector<double> x);
-
-// Define the Griewank function
-double ackley(vector<double> x);
-
-// Define the Griewank function
-double rastigrin(vector<double> x);
+//
+//// Define the Griewank function
+//double griewank(vector<double> x);
+//
+//// Define the Griewank function
+//double ackley(vector<double> x);
+//
+//// Define the Griewank function
+//double rastigrin(vector<double> x);
 
 // Function to return a uniform double
 double uniform(double ub, double lb);

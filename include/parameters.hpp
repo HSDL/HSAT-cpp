@@ -5,6 +5,7 @@
 #include <vector>
 #include <sstream>
 #include "utils.hpp"
+#include "utils/objective.hpp"
 
 using namespace std;
 
