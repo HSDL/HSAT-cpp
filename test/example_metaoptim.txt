@@ -1,12 +1,12 @@
-FUNC    ackley    0
+FUNC    griewank  0
 ADAPT   1         0
 INTER   1         0
-NREPS   10       0
-MAX_IT  100000    0
-DIMS    30        0
+NREPS   30        0
+MAX_IT  10000     0
+DIMS    10        0
 UBND    10        0
 LBND    -10       0
-NAGENTS 8        1   1      100
-TINIT   0.02     1   1e-16  100
-DELT    0.2      1   1e-16  100
-L_HIST  -50       1   -1000  -1
+NAGENTS 10        0
+DELT    10.0      1   0.0    1.0
+TINIT   1.0       1   1e-16  100
+L_HIST  -10.0     1   -1000  -1

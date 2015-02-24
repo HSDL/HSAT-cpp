@@ -14,4 +14,4 @@ make
 
 # Test the benchmarking function
 cd ..
-./build/bin/HSAT_OPTIM 5 ./test/example_metaoptim.txt ./test/output_metaoptim.txt
+./build/bin/HSAT_OPTIM 3 ./test/example_metaoptim.txt ./test/output_metaoptim.txt

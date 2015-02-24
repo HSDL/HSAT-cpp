@@ -177,17 +177,16 @@ void UnivariateSearch::solve(int max_iter){
                 // Create a parameter set with the new value
                 p_current = p_best;
                 p_current.set_from_pair(var_name[i], new_val);
-//                p_current.print_params();
 
                 // Save the new value (this takes advantage of rounding when pushed to parameter set
-                // X.push_back(new_val);
                 X.push_back(p_current.get_from_name(var_name[i]));
 
                 // Run a team with that value
                 Team T(p_current);
                 T.new_start();
                 T.solve();
-                Y.push_back(log10(T.best_solution.back()));
+//                Y.push_back(log10(T.best_solution.back()));
+                Y.push_back(T.best_solution.back());
             }
 
             // Now, perform regression with Y and X

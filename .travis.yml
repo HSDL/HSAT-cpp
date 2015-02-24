@@ -3,7 +3,7 @@ language: cpp
 compiler: g++
 
 script:
-  - mkdir build
-  - cd build
-  - cmake ..
-  - make
+  - cd test
+  - bash test_bench.sh
+  - cd test
+  - bash test_metaoptim.sh
