@@ -1,7 +1,7 @@
 FUNC    ackley    0
 ADAPT   0         0
 INTER   1         0
-NREPS   1       0
+NREPS   10        0
 MAX_IT  100000    0
 DIMS    30        0
 UBND    10        0

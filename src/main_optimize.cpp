@@ -1,6 +1,5 @@
 #include "../include/parameters.hpp"
 #include "../include/metaoptim.hpp"
-#include "../include/utils.hpp"
 
 int main(int argc, char *argv[]){
 

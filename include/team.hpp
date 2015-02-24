@@ -5,7 +5,7 @@
 #include <cmath>
 #include "parameters.hpp"
 #include "agent.hpp"
-#include "utils.hpp"
+#include "stats.hpp"
 
 class Team {
 public:

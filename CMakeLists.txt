@@ -7,7 +7,6 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "./bin")
 
 set(SOURCE_FILES_BENCH
     src/main_bench.cpp
-    include/utils.hpp
     include/agent.hpp
     include/parameters.hpp
     include/team.hpp
@@ -15,19 +14,19 @@ set(SOURCE_FILES_BENCH
     include/utils/objective.hpp
     include/utils/makerandom.hpp
     include/utils/customprint.hpp
-    src/utils.cpp
+    include/utils/stats.hpp
     src/agent.cpp
     src/parameters.cpp
     src/team.cpp
     src/multipleteams.cpp
     src/utils/objective.cpp
     src/utils/makerandom.cpp
-    src/utils/customprint.cpp)
+    src/utils/customprint.cpp
+    src/utils/stats.cpp)
 
 
 set(SOURCE_FILES_OPTIM
     src/main_optimize.cpp
-    include/utils.hpp
     include/agent.hpp
     include/parameters.hpp
     include/team.hpp
@@ -36,7 +35,7 @@ set(SOURCE_FILES_OPTIM
     include/utils/objective.hpp
     include/utils/makerandom.hpp
     include/utils/customprint.hpp
-    src/utils.cpp
+    include/utils/stats.hpp
     src/agent.cpp
     src/parameters.cpp
     src/team.cpp
@@ -44,7 +43,8 @@ set(SOURCE_FILES_OPTIM
     src/metaoptim.cpp
     src/utils/objective.cpp
     src/utils/makerandom.cpp
-    src/utils/customprint.cpp)
+    src/utils/customprint.cpp
+    src/utils/stats.cpp)
 
 add_executable(HSAT_BENCH ${SOURCE_FILES_BENCH})
 add_executable(HSAT_OPTIM ${SOURCE_FILES_OPTIM})
