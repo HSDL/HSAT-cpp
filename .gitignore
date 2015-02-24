@@ -1,9 +1,5 @@
 .idea/*
-input.txt
-output.txt
 bin/*
-data/*
 results/*
-scripts/*
 build/*
 test/output*
