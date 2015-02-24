@@ -7,6 +7,7 @@
 #include <vector>
 #include "parameters.hpp"
 #include "utils/makerandom.hpp"
+#include "utils/stats.hpp"
 
 using namespace std;
 

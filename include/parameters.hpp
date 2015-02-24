@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 #include <sstream>
-#include "stats.hpp"
 #include "utils/objective.hpp"
 
 using namespace std;

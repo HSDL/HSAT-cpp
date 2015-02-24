@@ -5,7 +5,7 @@
 #include <cmath>
 #include <numeric>
 
-#include "stats.hpp"
+#include "utils/stats.hpp"
 #include "agent.hpp"
 #include "team.hpp"
 #include "parameters.hpp"

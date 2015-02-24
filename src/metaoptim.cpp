@@ -1,5 +1,4 @@
 #include "../include/metaoptim.hpp"
-#include "stats.hpp"
 
 // Null initializer for search
 Search::Search(){seed_time();}
