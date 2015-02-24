@@ -1,10 +1,7 @@
 #ifndef AGENT_HPP
 #define AGENT_HPP
 
-#include <iostream>
-#include <cmath>
 #include <list>
-#include <vector>
 #include "parameters.hpp"
 #include "utils/makerandom.hpp"
 #include "utils/stats.hpp"

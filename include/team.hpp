@@ -1,11 +1,7 @@
 #ifndef TEAM_HPP
 #define TEAM_HPP
 
-#include <iostream>
-#include <cmath>
-#include "parameters.hpp"
 #include "agent.hpp"
-#include "utils/stats.hpp"
 
 class Team {
 public:

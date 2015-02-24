@@ -1,14 +1,7 @@
 #ifndef MULTIPLETEAMS_HPP
 #define MULTIPLETEAMS_HPP
 
-#include <iostream>
-#include <cmath>
-#include <numeric>
-
-#include "utils/stats.hpp"
-#include "agent.hpp"
 #include "team.hpp"
-#include "parameters.hpp"
 
 class MultipleTeams {
 public:

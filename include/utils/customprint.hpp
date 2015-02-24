@@ -5,12 +5,6 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include <cstdlib>
-#include <ctime>
-#include <cmath>
-#include <numeric>
-#include <cfloat>
-#include <deque>
 
 using namespace std;
 

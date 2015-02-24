@@ -1,10 +1,6 @@
 #ifndef METAOPTIM_HPP
 #define METAOPTIM_HPP
 
-#include <iostream>
-#include <cmath>
-#include <numeric>
-
 #include "multipleteams.hpp"
 
 using namespace std;

@@ -2,8 +2,9 @@
 #define PARAMETERS_HPP
 
 #include <string>
-#include <vector>
 #include <sstream>
+#include <iostream>
+#include <fstream>
 #include "utils/objective.hpp"
 
 using namespace std;
