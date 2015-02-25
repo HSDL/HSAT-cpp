@@ -5,5 +5,4 @@ compiler: g++
 script:
   - cd test
   - bash test_bench.sh
-  - cd test
   - bash test_metaoptim.sh
