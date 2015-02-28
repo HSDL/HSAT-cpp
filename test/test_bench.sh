@@ -14,6 +14,6 @@ make
 
 # Test the benchmarking function
 cd ..
-./build/bin/HSAT_BENCH ./test/example_bench.txt output.txt
+./build/bin/HSAT_BENCH ./test/example_bench.txt ./test/output_bench.txt
 
 exit 0
