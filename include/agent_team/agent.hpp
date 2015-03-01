@@ -2,9 +2,9 @@
 #define AGENT_HPP
 
 #include <list>
-#include "utils/parameters.hpp"
-#include "utils/makerandom.hpp"
-#include "utils/stats.hpp"
+#include "../utils/parameters.hpp"
+#include "../utils/makerandom.hpp"
+#include "../utils/stats.hpp"
 
 using namespace std;
 

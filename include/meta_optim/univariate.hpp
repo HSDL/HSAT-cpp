@@ -1,7 +1,7 @@
 #ifndef UNIVARIATE_HPP
 #define UNIVARIATE_HPP
 
-#include "../multipleteams.hpp"
+#include "../agent_team/multipleteams.hpp"
 #include "search.hpp"
 
 using namespace std;

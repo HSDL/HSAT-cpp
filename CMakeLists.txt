@@ -7,17 +7,17 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "./bin")
 
 set(SOURCE_FILES_BENCH
     src/main_bench.cpp
-    include/agent.hpp
-    include/team.hpp
-    include/multipleteams.hpp
+    include/agent_team/agent.hpp
+    include/agent_team/team.hpp
+    include/agent_team/multipleteams.hpp
     include/utils/parameters.hpp
     include/utils/objective.hpp
     include/utils/makerandom.hpp
     include/utils/customprint.hpp
     include/utils/stats.hpp
-    src/agent.cpp
-    src/team.cpp
-    src/multipleteams.cpp
+    src/agent_team/agent.cpp
+    src/agent_team/team.cpp
+    src/agent_team/multipleteams.cpp
     src/utils/parameters.cpp
     src/utils/objective.cpp
     src/utils/makerandom.cpp
@@ -27,9 +27,9 @@ set(SOURCE_FILES_BENCH
 
 set(SOURCE_FILES_OPTIM
     src/main_optimize.cpp
-    include/agent.hpp
-    include/team.hpp
-    include/multipleteams.hpp
+    include/agent_team/agent.hpp
+    include/agent_team/team.hpp
+    include/agent_team/multipleteams.hpp
     include/meta_optim/search.hpp
     include/meta_optim/pattern.hpp
     include/meta_optim/univariate.hpp
@@ -38,9 +38,9 @@ set(SOURCE_FILES_OPTIM
     include/utils/makerandom.hpp
     include/utils/customprint.hpp
     include/utils/stats.hpp
-    src/agent.cpp
-    src/team.cpp
-    src/multipleteams.cpp
+    src/agent_team/agent.cpp
+    src/agent_team/team.cpp
+    src/agent_team/multipleteams.cpp
     src/meta_optim/search.cpp
     src/meta_optim/pattern.cpp
     src/meta_optim/univariate.cpp

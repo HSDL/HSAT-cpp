@@ -1,7 +1,7 @@
 #ifndef PATTERN_HPP
 #define PATTERN_HPP
 
-#include "../multipleteams.hpp"
+#include "../agent_team/multipleteams.hpp"
 #include "search.hpp"
 
 using namespace std;
