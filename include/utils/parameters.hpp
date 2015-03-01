@@ -5,7 +5,7 @@
 #include <sstream>
 #include <iostream>
 #include <fstream>
-#include "utils/objective.hpp"
+#include "objective.hpp"
 
 using namespace std;
 

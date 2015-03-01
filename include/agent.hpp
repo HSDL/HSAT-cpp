@@ -2,7 +2,7 @@
 #define AGENT_HPP
 
 #include <list>
-#include "parameters.hpp"
+#include "utils/parameters.hpp"
 #include "utils/makerandom.hpp"
 #include "utils/stats.hpp"
 

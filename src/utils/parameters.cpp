@@ -1,4 +1,4 @@
-#include "../include/parameters.hpp"
+#include "../../include/utils/parameters.hpp"
 
 //// Construct the thing
 Parameters::Parameters(void){}
