@@ -31,7 +31,9 @@ set(SOURCE_FILES_OPTIM
     include/parameters.hpp
     include/team.hpp
     include/multipleteams.hpp
-    include/metaoptim.hpp
+    include/meta_optim/search.hpp
+    include/meta_optim/pattern.hpp
+    include/meta_optim/univariate.hpp
     include/utils/objective.hpp
     include/utils/makerandom.hpp
     include/utils/customprint.hpp
@@ -40,7 +42,9 @@ set(SOURCE_FILES_OPTIM
     src/parameters.cpp
     src/team.cpp
     src/multipleteams.cpp
-    src/metaoptim.cpp
+    src/meta_optim/search.cpp
+    src/meta_optim/pattern.cpp
+    src/meta_optim/univariate.cpp
     src/utils/objective.cpp
     src/utils/makerandom.cpp
     src/utils/customprint.cpp

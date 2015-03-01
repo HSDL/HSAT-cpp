@@ -1,4 +1,4 @@
-#include "../include/metaoptim.hpp"
+#include "../include/meta_optim/univariate.hpp"
 
 int main(int argc, char *argv[]){
 
