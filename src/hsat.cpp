@@ -19,24 +19,24 @@ int main(int argc, char *argv[]) {
 
     // Parse the inputs
     for(int i=1; i < argc; i++) {
-        if (string(argv[i]) == "--bench") {
+        if (string(argv[i]) == "--bench" || string(argv[i]) == "-b") {
             bench = true;
-        } else if (string(argv[i]) == "--univariate") {
+        } else if (string(argv[i]) == "--univar" || string(argv[i]) == "-u") {
             univariate = true;
             i++;
             max_iter = atoi(argv[i]);
-        } else if (string(argv[i]) == "--pattern") {
+        } else if (string(argv[i]) == "--pattern" || string(argv[i]) == "-p") {
             pattern = true;
             i++;
             max_iter = atoi(argv[i]);
-        } else if (string(argv[i]) == "--output") {
+        } else if (string(argv[i]) == "--output" || string(argv[i]) == "-o") {
             i++;
             output = string(argv[i]);
             found_output = true;
-        } else if (string(argv[i]) == "--input") {
+        } else if (string(argv[i]) == "--input" || string(argv[i]) == "-i") {
             i++;
             input = string(argv[i]);
-        } else if (string(argv[i]) == "--verbose") {
+        } else if (string(argv[i]) == "--verbose" || string(argv[i]) == "-v") {
             verb = true;
         }
     }

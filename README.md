@@ -16,7 +16,7 @@ Building using Cmake will produce   ``hsat``, compiled code for executing the HS
 </tr>
 <tr>
   <td><tt>--output file</tt><br/><tt>&nbsp;-o file</tt></td>
-  <td>Denotes the output file for the algorithm</td>
+  <td>Denotes the output file for the algorithm.</td>
 </tr>
 <tr>
   <td><tt>--pattern n</tt><br/><tt>&nbsp;-p n</tt></td>
@@ -24,6 +24,10 @@ Building using Cmake will produce   ``hsat``, compiled code for executing the HS
 </tr>
 <tr>
   <td><tt>--univar n</tt><br/><tt>&nbsp;-u n</tt></td>
-  <td>Instructs the algorithm to perform a stochastic univariate search with n iterations to tune parameters</td>
+  <td>Instructs the algorithm to perform a stochastic univariate search with n iterations to tune parameters.</td>
+</tr>
+<tr>
+  <td><tt>--verbose</tt><br/><tt>&nbsp;-v</tt></td>
+  <td>Verbose mode (lots of output). Limited integration at the moment.</td>
 </tr>
 </table>
