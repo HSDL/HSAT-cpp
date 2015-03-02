@@ -50,5 +50,33 @@ set(SOURCE_FILES_OPTIM
     src/utils/customprint.cpp
     src/utils/stats.cpp)
 
+
+set(SOURCE_FILES_MAIN
+    src/hsat.cpp
+    include/agent_team/agent.hpp
+    include/agent_team/team.hpp
+    include/agent_team/multipleteams.hpp
+    include/meta_optim/search.hpp
+    include/meta_optim/pattern.hpp
+    include/meta_optim/univariate.hpp
+    include/utils/objective.hpp
+    include/utils/parameters.hpp
+    include/utils/makerandom.hpp
+    include/utils/customprint.hpp
+    include/utils/stats.hpp
+    src/agent_team/agent.cpp
+    src/agent_team/team.cpp
+    src/agent_team/multipleteams.cpp
+    src/meta_optim/search.cpp
+    src/meta_optim/pattern.cpp
+    src/meta_optim/univariate.cpp
+    src/utils/parameters.cpp
+    src/utils/objective.cpp
+    src/utils/makerandom.cpp
+    src/utils/customprint.cpp
+    src/utils/stats.cpp)
+
+
 add_executable(HSAT_BENCH ${SOURCE_FILES_BENCH})
 add_executable(HSAT_OPTIM ${SOURCE_FILES_OPTIM})
+add_executable(hsat ${SOURCE_FILES_MAIN})

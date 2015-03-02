@@ -44,7 +44,7 @@ void save_to_file(string file_path, vector<double> x){
 
     // Step through the vector, and print an element on each line
     for(int i=0; i<x.size(); i++){
-        my_file << x[i] << endl;
+        my_file << x[i]  << endl;
     }
 
     // Close the file
