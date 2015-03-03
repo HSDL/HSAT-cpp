@@ -10,7 +10,7 @@ class UnivariateSearch : public Search {
 public:
 //// Functions
 UnivariateSearch(string file_name); // A function to construct the thing.
-void solve(int max_iter);  // A function to solve the problem.
+void solve(int max_iter, bool verb);  // A function to solve the problem.
 
 //// Variables
 int current_iteration;

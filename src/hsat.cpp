@@ -53,13 +53,22 @@ int main(int argc, char *argv[]) {
 
     // Run benchmarking
     if(bench){
-        // Initialize and solve
+        double fxmean = 0;
+        // Initialize it
         MultipleTeams MT(input);
-        MT.solve();
+
+        // Print parameters if verbose
+        if(verb){
+            MT.p.print_params();
+        }
+
+        // Solve it
+        fxmean = MT.solve();
 
         // Print output if requested
+        cout << endl << "mean solution = " << fxmean << endl << endl;
         if(verb){
-            print(MT.solve());
+            cout << "all solutions = " << endl;
             print(MT.cdf);
         }
 
@@ -74,8 +83,13 @@ int main(int argc, char *argv[]) {
         // Make it
         UnivariateSearch US(input);
 
+        // If verbose, print beginning values
+        if(verb){
+            US.p_best.print_params();
+        }
+
         // Solve it all
-        US.solve(max_iter);
+        US.solve(max_iter, verb);
 
         // Output the final solution set to a file defined by argv2
         if(found_output) {

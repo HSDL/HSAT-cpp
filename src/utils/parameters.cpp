@@ -31,40 +31,40 @@ void Parameters::set_from_file(string file_name) {
 
         if(name == "FUNC") {
             ss >> function;
-            cout << "Function:         "<< function << endl;
+//            cout << "Function:         "<< function << endl;
         } else if(name == "NAGENTS"){
             ss >> n_agents;
-            cout << "Number of agents: "<< n_agents << endl;
+//            cout << "Number of agents: "<< n_agents << endl;
         } else if(name == "ADAPT") {
             ss >> adaptive;
-            cout << "Adaptive?:        "<< (adaptive ? "yes" : "no") << endl;
+//            cout << "Adaptive?:        "<< (adaptive ? "yes" : "no") << endl;
         } else if(name == "INTER") {
             ss >> interacting;
-            cout << "Interacting:      "<< (interacting ? "yes" : "no") << endl;
+//            cout << "Interacting:      "<< (interacting ? "yes" : "no") << endl;
         } else if(name == "TINIT") {
             ss >> temp_init;
-            cout << "Initial temp:     "<< temp_init << endl;
+//            cout << "Initial temp:     "<< temp_init << endl;
         } else if(name == "DELT") {
             ss >> delt;
-            cout << "Temp factor:      "<< delt << endl;
+//            cout << "Temp factor:      "<< delt << endl;
         } else if(name == "L_HIST") {
             ss >> history_length;
-            cout << "History length:   "<< history_length << endl;
+//            cout << "History length:   "<< history_length << endl;
         } else if(name == "NREPS") {
             ss >> n_reps;
-            cout << "Number of reps:   "<< n_reps << endl;
+//            cout << "Number of reps:   "<< n_reps << endl;
         } else if(name == "MAX_IT") {
             ss >> max_iter;
-            cout << "Max iterations:   "<< max_iter << endl;
+//            cout << "Max iterations:   "<< max_iter << endl;
         } else if(name == "DIMS") {
             ss >> D;
-            cout << "Number of dims:   "<< D << endl;
+//            cout << "Number of dims:   "<< D << endl;
         } else if(name == "UBND") {
             ss >> ub;
-            cout << "Upper bound on x: "<< ub << endl;
+//            cout << "Upper bound on x: "<< ub << endl;
         } else if(name == "LBND") {
             ss >> lb;
-            cout << "Lower bound on x: "<< lb << endl;
+//            cout << "Lower bound on x: "<< lb << endl;
         }
     }
 }

@@ -5,7 +5,7 @@ UnivariateSearch::UnivariateSearch(string file_name){
     parse_param_file(file_name);
 }
 
-void UnivariateSearch::solve(int max_iter){
+void UnivariateSearch::solve(int max_iter, bool verb){
     // Stores the current iteration and values
     current_iteration = 0;
     Parameters p_current;
@@ -22,16 +22,22 @@ void UnivariateSearch::solve(int max_iter){
     vector<double> quad_res;
     double temp_ub;
     double temp_lb;
-    cout << "\nBeginning Optimization Routine" << endl;
+    if(verb) {
+        cout << "\nBeginning Optimization Routine" << endl;
+    }
 
     // Do some iterations, bro. Get mad optimized.
     while(current_iteration < max_iter) {
-        cout << "\tIteration " << current_iteration+1 << " of " << max_iter << endl;
+        if(verb) {
+            cout << "\tIteration " << current_iteration + 1 << " of " << max_iter << endl;
+        }
         EDGE_SOLUTION = false;
         APPROACHING_BOUND = false;
         // Within each iteration, step in each direction
         for (int i = 0; i < var_name.size(); i++) {
-            cout << "\t\tComputing " << var_name[i];
+            if(verb) {
+                cout << "\t\tComputing " << var_name[i];
+            }
 
             // Draw a random variable in the param range
             temp_ub = min(var_vals[i]+step_sizes[i], upper_lims[i]);
@@ -76,11 +82,13 @@ void UnivariateSearch::solve(int max_iter){
                 }
             }
 
-            cout << "\t= " << quad_res[0]
-                    << ", mean = " << quad_res[2]
-                    << ", fx = "   << quad_res[1]
-                    << ", r2 = "   << quad_res[3]
-                    << ", "        << (EDGE_SOLUTION ? "edge" : "interior") << endl;
+            if(verb) {
+                cout << "\t= " << quad_res[0]
+                        << ", mean = " << quad_res[2]
+                        << ", fx = " << quad_res[1]
+                        << ", r2 = " << quad_res[3]
+                        << ", " << (EDGE_SOLUTION ? "edge" : "interior") << endl;
+            }
 
             X.clear();
             Y.clear();
@@ -90,7 +98,9 @@ void UnivariateSearch::solve(int max_iter){
             for (int i = 0; i < step_sizes.size(); i++) {
                 step_sizes[i] /= 2.0;
             }
-            cout << "\t\t" << "Updating step sizes." << endl;
+            if(verb){
+                cout << "\t\t" << "Updating step sizes." << endl;
+            }
         }
         current_iteration++;
     }
