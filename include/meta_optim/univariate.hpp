@@ -14,7 +14,6 @@ void solve(int max_iter, bool verb);  // A function to solve the problem.
 
 //// Variables
 int current_iteration;
-double fx_best;
 
 private:
 // nothing yet
