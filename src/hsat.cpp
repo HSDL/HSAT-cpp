@@ -8,10 +8,10 @@ using namespace std;
 int main(int argc, char *argv[]) {
 
     // Variables to figure out what's going on
+    int max_iter = 10;
     bool bench = false;
     bool univariate = false;
     bool pattern = false;
-    int max_iter = 10;
     bool found_output = false;
     bool verb = false;
     string input;
@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
 
     // If no arguments, provide help text
     if(argc == 1){
-        cout << "You probably need help. RTFM." << endl;
+        cout << "." << endl;
     }
 
     // Run benchmarking
