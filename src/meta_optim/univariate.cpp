@@ -26,7 +26,7 @@ void UnivariateSearch::solve(int max_iter){
 
     // Do some iterations, bro. Get mad optimized.
     while(current_iteration < max_iter) {
-        cout << "\tIteration " << current_iteration << endl;
+        cout << "\tIteration " << current_iteration+1 << " of " << max_iter << endl;
         EDGE_SOLUTION = false;
         APPROACHING_BOUND = false;
         // Within each iteration, step in each direction
@@ -80,8 +80,7 @@ void UnivariateSearch::solve(int max_iter){
                     << ", mean = " << quad_res[2]
                     << ", fx = "   << quad_res[1]
                     << ", r2 = "   << quad_res[3]
-                    << ", "        << (quad_res[3] > 0.01)
-                    << ", "        << EDGE_SOLUTION << endl;
+                    << ", "        << (EDGE_SOLUTION ? "edge" : "interior") << endl;
 
             X.clear();
             Y.clear();

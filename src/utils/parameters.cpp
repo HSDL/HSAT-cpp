@@ -37,10 +37,10 @@ void Parameters::set_from_file(string file_name) {
             cout << "Number of agents: "<< n_agents << endl;
         } else if(name == "ADAPT") {
             ss >> adaptive;
-            cout << "Adaptive?:        "<< adaptive << endl;
+            cout << "Adaptive?:        "<< (adaptive ? "yes" : "no") << endl;
         } else if(name == "INTER") {
             ss >> interacting;
-            cout << "Interacting?:     "<< interacting << endl;
+            cout << "Interacting:      "<< (interacting ? "yes" : "no") << endl;
         } else if(name == "TINIT") {
             ss >> temp_init;
             cout << "Initial temp:     "<< temp_init << endl;
@@ -71,18 +71,18 @@ void Parameters::set_from_file(string file_name) {
 
 //// Shows the current parameters
 void Parameters::print_params(void) {
-    cout << "Function:         " <<  function       << endl;
-    cout << "Number of agents: " <<  n_agents       << endl;
-    cout << "Adaptive?:        " <<  adaptive       << endl;
-    cout << "Interacting?:     " <<  interacting    << endl;
-    cout << "Initial temp:     " <<  temp_init      << endl;
-    cout << "Temp factor:      " <<  delt           << endl;
-    cout << "History length:   " <<  history_length << endl;
-    cout << "Number of reps:   " <<  n_reps         << endl;
-    cout << "Max iterations:   " <<  max_iter       << endl;
-    cout << "Number of dims:   " <<  D              << endl;
-    cout << "Upper bound on x: " <<  ub             << endl;
-    cout << "Lower bound on x: " <<  lb             << endl;
+    cout << "Function:         " <<  function                        << endl;
+    cout << "Number of agents: " <<  n_agents                        << endl;
+    cout << "Adaptive?:        " <<  (adaptive ? "yes" : "no")       << endl;
+    cout << "Interacting?:     " <<  (interacting ? "yes" : "no")    << endl;
+    cout << "Initial temp:     " <<  temp_init                       << endl;
+    cout << "Temp factor:      " <<  delt                            << endl;
+    cout << "History length:   " <<  history_length                  << endl;
+    cout << "Number of reps:   " <<  n_reps                          << endl;
+    cout << "Max iterations:   " <<  max_iter                        << endl;
+    cout << "Number of dims:   " <<  D                               << endl;
+    cout << "Upper bound on x: " <<  ub                              << endl;
+    cout << "Lower bound on x: " <<  lb                              << endl;
 }
 
 //// Sets parameters based on a vector
