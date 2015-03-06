@@ -83,9 +83,8 @@ void UnivariateSearch::solve(int max_iter, bool verb){
             }
 
             if(verb) {
-                cout << "\t= " << quad_res[0]
+                cout << " = " << quad_res[0]
                         << ", mean = " << quad_res[2]
-                        << ", fx = " << quad_res[1]
                         << ", r2 = " << quad_res[3]
                         << ", " << (EDGE_SOLUTION ? "edge" : "interior") << endl;
             }
@@ -99,7 +98,7 @@ void UnivariateSearch::solve(int max_iter, bool verb){
                 step_sizes[i] /= 2.0;
             }
             if(verb){
-                cout << "\t\t" << "Updating step sizes." << endl;
+                cout << "\t\t" << "All interior points. Updating step sizes." << endl;
             }
         }
         current_iteration++;

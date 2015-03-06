@@ -7,6 +7,6 @@ DIMS    10        0
 UBND    10        0
 LBND    -10       0
 NAGENTS 10        0
-DELT    10.0      1   0.0    1.0
+DELT    10.0      1   1e-16  100
 TINIT   1.0       1   1e-16  100
 L_HIST  -10.0     1   -1000  -1

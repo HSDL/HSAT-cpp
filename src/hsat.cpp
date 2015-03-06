@@ -103,8 +103,13 @@ int main(int argc, char *argv[]) {
         // Make it
         PatternSearch PS(input);
 
+        // If verbose, print beginning values
+        if(verb){
+            PS.p_best.print_params();
+        }
+
         // Solve it all
-        PS.solve(max_iter);
+        PS.solve(max_iter, verb);
 
         // Output the final solution set to a file defined by argv2
         if(found_output) {
