@@ -2,12 +2,17 @@
 #include "../include/meta_optim/univariate.hpp"
 #include "../include/meta_optim/pattern.hpp"
 #include "../include/utils/customprint.hpp"
+#include <sys/time.h>
 
 using namespace std;
 
 int main(int argc, char *argv[]) {
+    // Start timing the code
+    struct timeval start, end;
+    gettimeofday(&start, NULL);
 
     // Variables to figure out what's going on
+    double delta;
     int max_iter = 10;
     bool bench = false;
     bool univariate = false;
@@ -120,6 +125,13 @@ int main(int argc, char *argv[]) {
             PS.save_settings(output);
         }
     }
+
+    // Take finished time and print duration
+    gettimeofday(&end, NULL);
+    delta = ((end.tv_sec  - start.tv_sec) * 1000000u + end.tv_usec - start.tv_usec) / 1.e6;
+
+    cout.precision(2);
+    cout << fixed << delta << " seconds elapsed." << endl;
 
     return 0;
 }
