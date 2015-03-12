@@ -2,6 +2,7 @@
 #define TEAM_HPP
 
 #include "agent.hpp"
+#include <omp.h>
 
 class Team {
 public:

@@ -32,9 +32,13 @@ void Team::new_start(void){
 //// Iterate the team
 void Team::iterate(int iter){
     // Iterate each agent
+    # pragma omp parallel for
     for(int i=0; i<agent_list.size(); i++){
+        cout << agent_list[i].id;
         agent_list[i].iterate(iter);
     }
+    cout << endl;
+
     // Share new results between agents
     for(int i=0; i<agent_list.size(); i++){
         agent_list[0].all_fx_current[agent_list[i].id] = agent_list[i].fx_current;

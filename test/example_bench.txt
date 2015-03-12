@@ -1,7 +1,11 @@
 FUNC    griewank  0
 ADAPT   1         0
 INTER   1         0
+<<<<<<< Updated upstream
 NREPS   10        0
+=======
+NREPS   200       0
+>>>>>>> Stashed changes
 MAX_IT  10000     0
 DIMS    10        0
 UBND    10        0
