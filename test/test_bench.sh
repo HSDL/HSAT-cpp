@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Test the benchmarking functionality
-cd ..
-./build/bin/hsat --bench --input ./test/example_bench.txt --output ./test/output_bench.txt --verbose
+../build/bin/hsat --bench --input example_bench.txt --output output_bench.txt --verbose --parallel 2
 
 exit 0
