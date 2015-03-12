@@ -32,7 +32,6 @@ void Team::new_start(void){
 //// Iterate the team
 void Team::iterate(int iter){
     // Iterate each agent
-    #pragma omp parallel for
     for(int i=0; i<agent_list.size(); i++){
         agent_list[i].iterate(iter);
     }

@@ -34,19 +34,30 @@ MultipleTeams::MultipleTeams(string file_name){
 double MultipleTeams::solve(void){
     seed_time();
 
+    // Make a vector of teams
+    vector<Team> team_list;
     for(int i=0; i<p.n_reps; i++) {
-        // Instantiate a new team
-        Team T(p);
+        Team temp(p);
+        team_list.push_back(temp);
+    }
 
+    // Give each team a new start
+    for(int i=0; i<p.n_reps; i++) {
         // Give the team a new start
-        T.new_start();
+        team_list[i].new_start();
+    }
 
+    // Run the solution loop in parallel
+    # pragma omp parallel for
+    for(int i=0; i<p.n_reps; i++) {
         // Solve the problem with the team
-        T.solve();
+        team_list[i].solve();
+    }
 
-        // Save results
-        cdf[i] = T.best_solution.back();
-        best_solution[i] = T.best_solution;
+    // Save results
+    for(int i=0; i<p.n_reps; i++) {
+        cdf[i] = team_list[i].best_solution.back();
+        best_solution[i] = team_list[i].best_solution;
     }
 
     // Sort the cdf vector

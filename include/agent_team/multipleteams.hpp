@@ -3,6 +3,7 @@
 
 #include "team.hpp"
 #include <algorithm>
+#include <omp.h>
 
 class MultipleTeams {
 public:
