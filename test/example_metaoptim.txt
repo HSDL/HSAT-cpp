@@ -1,7 +1,7 @@
 FUNC    griewank  0
 ADAPT   1         0
 INTER   1         0
-NREPS   30        0
+NREPS   100       0
 MAX_IT  10000     0
 DIMS    10        0
 UBND    10        0

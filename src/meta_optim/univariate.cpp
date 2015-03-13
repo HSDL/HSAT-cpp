@@ -9,19 +9,29 @@ void UnivariateSearch::solve(int max_iter, bool verb){
     // Stores the current iteration and values
     current_iteration = 0;
     Parameters p_current;
+
     // Stores a new value
     double new_val = 0;
+
     // Keeps track of whether or not an edge solution has been found
     bool EDGE_SOLUTION;
+
     // Keeps track of whether a bound is being approached
     bool APPROACHING_BOUND;
+
     // Stores values to feed to quadratic regression
-    vector<double> X;
-    vector<double> Y;
+    vector<double> X(static_cast <unsigned long> (p_best.n_reps), 0.0);
+    vector<double> Y(static_cast <unsigned long> (p_best.n_reps), 0.0);
+
+    // Instantiate a team list
+    vector<Team> team_list;
+
     // Stores the results from the quadratic regression
     vector<double> quad_res;
     double temp_ub;
     double temp_lb;
+
+    // If verbose option is turned on, print some things!
     if(verb) {
         cout << "\nBeginning Optimization Routine" << endl;
     }
@@ -48,9 +58,9 @@ void UnivariateSearch::solve(int max_iter, bool verb){
                 APPROACHING_BOUND = true;
             }
 
-            // Initialize vectors for regression
-            for (int j = 0; j < p_best.n_reps; j++){
-
+            // Make a vector of teams
+            team_list.clear();
+            for (int j = 0; j < p_best.n_reps; j++) {
                 // Define a new value
                 new_val = uniform(temp_ub, temp_lb);
 
@@ -59,14 +69,22 @@ void UnivariateSearch::solve(int max_iter, bool verb){
                 p_current.set_from_pair(var_name[i], new_val);
 
                 // Save the new value (this takes advantage of rounding when pushed to parameter set
-                X.push_back(p_current.get_from_name(var_name[i]));
+                X[j] = p_current.get_from_name(var_name[i]);
 
                 // Run a team with that value
-                Team T(p_current);
-                T.new_start();
-                T.solve();
-//                Y.push_back(log10(T.best_solution.back()));
-                Y.push_back(T.best_solution.back());
+                Team temp(p_current);
+                team_list.push_back(temp);
+            }
+
+            // Make new starts
+            for (int j = 0; j < p_best.n_reps; j++) {
+                team_list[j].new_start();
+            }
+
+            # pragma omp parallel for
+            for (int j = 0; j < p_best.n_reps; j++){
+                team_list[j].solve();
+                Y[j] = team_list[j].best_solution.back();
             }
 
             // Now, perform regression with Y and X
@@ -88,9 +106,6 @@ void UnivariateSearch::solve(int max_iter, bool verb){
                         << ", r2 = " << quad_res[3]
                         << ", " << (EDGE_SOLUTION ? "edge" : "interior") << endl;
             }
-
-            X.clear();
-            Y.clear();
         }
         // Halve the step-sizes
         if(!EDGE_SOLUTION) {
