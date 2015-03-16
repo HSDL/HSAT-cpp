@@ -81,6 +81,7 @@ void UnivariateSearch::solve(int max_iter, bool verb){
                 team_list[j].new_start();
             }
 
+            // Solve and save in parallel
             # pragma omp parallel for
             for (int j = 0; j < p_best.n_reps; j++){
                 team_list[j].solve();
@@ -100,6 +101,7 @@ void UnivariateSearch::solve(int max_iter, bool verb){
                 }
             }
 
+            // Output is verbose option is chosen
             if(verb) {
                 cout << " = " << quad_res[0]
                         << ", mean = " << quad_res[2]
@@ -107,6 +109,7 @@ void UnivariateSearch::solve(int max_iter, bool verb){
                         << ", " << (EDGE_SOLUTION ? "edge" : "interior") << endl;
             }
         }
+
         // Halve the step-sizes
         if(!EDGE_SOLUTION) {
             for (int i = 0; i < step_sizes.size(); i++) {
@@ -116,6 +119,11 @@ void UnivariateSearch::solve(int max_iter, bool verb){
                 cout << "\t\t" << "All interior points. Updating step sizes." << endl;
             }
         }
+
+        // Increment the iteration counter
         current_iteration++;
+
+        // Clear the list of teams in preparation for the next iteration.
+        team_list.clear();
     }
 }
