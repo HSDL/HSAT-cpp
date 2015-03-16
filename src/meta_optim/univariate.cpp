@@ -24,7 +24,7 @@ void UnivariateSearch::solve(int max_iter, bool verb){
     vector<double> Y(static_cast <unsigned long> (p_best.n_reps), 0.0);
 
     // Instantiate a team list
-    vector<Team> team_list;
+//    vector<Team> team_list;
 
     // Stores the results from the quadratic regression
     vector<double> quad_res;
@@ -59,7 +59,6 @@ void UnivariateSearch::solve(int max_iter, bool verb){
             }
 
             // Make a vector of teams
-            team_list.clear();
             for (int j = 0; j < p_best.n_reps; j++) {
                 // Define a new value
                 new_val = uniform(temp_ub, temp_lb);
@@ -73,19 +72,9 @@ void UnivariateSearch::solve(int max_iter, bool verb){
 
                 // Run a team with that value
                 Team temp(p_current);
-                team_list.push_back(temp);
-            }
-
-            // Make new starts
-            for (int j = 0; j < p_best.n_reps; j++) {
-                team_list[j].new_start();
-            }
-
-            // Solve and save in parallel
-            # pragma omp parallel for
-            for (int j = 0; j < p_best.n_reps; j++){
-                team_list[j].solve();
-                Y[j] = team_list[j].best_solution.back();
+                temp.new_start();
+                temp.solve();
+                Y[j] = temp.best_solution.back();
             }
 
             // Now, perform regression with Y and X
@@ -122,8 +111,5 @@ void UnivariateSearch::solve(int max_iter, bool verb){
 
         // Increment the iteration counter
         current_iteration++;
-
-        // Clear the list of teams in preparation for the next iteration.
-        team_list.clear();
     }
 }
