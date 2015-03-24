@@ -19,10 +19,6 @@ Building using Cmake will produce   ``hsat``, compiled code for executing the HS
   <td>Denotes the output file for the algorithm.</td>
 </tr>
 <tr>
-  <td><tt>--parallel n</tt><br/><tt>&nbsp;-t n</tt></td>
-  <td>Instructs the algorithm to run in paralle using n threads.</td>
-</tr>
-<tr>
   <td><tt>--pattern n</tt><br/><tt>&nbsp;-p n</tt></td>
   <td>Instructs the algorithm to perform a pattern search with n iterations to tune parameters.</td>
 </tr>

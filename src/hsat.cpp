@@ -2,11 +2,15 @@
 #include "../include/meta_optim/univariate.hpp"
 #include "../include/meta_optim/pattern.hpp"
 #include "../include/utils/customprint.hpp"
+#include "../include/utils/makerandom.hpp"
 #include <sys/time.h>
 
 using namespace std;
 
 int main(int argc, char *argv[]) {
+    // Random seed
+    seed_time();
+
     // Start timing the code
     struct timeval start, end;
     gettimeofday(&start, NULL);
@@ -48,10 +52,6 @@ int main(int argc, char *argv[]) {
         }
         if (string(argv[i]) == "--verbose"  || string(argv[i]) == "-v") {
             verb = true;
-        }
-        if (string(argv[i]) == "--parallel" || string(argv[i]) == "-t") {
-            i++;
-            omp_set_num_threads(atoi(argv[i]));
         }
     }
 

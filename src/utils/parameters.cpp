@@ -4,7 +4,7 @@
 Parameters::Parameters(void){}
 
 //// Object function of the thing
-double Parameters::obj(vector<double> x) {
+long double Parameters::obj(vector<long double> x) {
     if(function == "griewank")       return griewank(x);
     else if(function == "ackley")    return ackley(x);
     else if(function == "rastigrin") return rastigrin(x);
@@ -57,7 +57,7 @@ void Parameters::print_params(void) {
 }
 
 //// Sets parameters based on a vector
-void Parameters::set_from_pair(string name, double x) {
+void Parameters::set_from_pair(string name, long double x) {
     if(name == "DELT")         delt = x;
     else if(name == "L_HIST")  history_length =static_cast <int> (round(x));
     else if(name == "NAGENTS") n_agents = static_cast <int> (round(x));
@@ -65,7 +65,7 @@ void Parameters::set_from_pair(string name, double x) {
 }
 
 //// Sets parameters based on a vector
-double Parameters::get_from_name(string name) {
+long double Parameters::get_from_name(string name) {
     if(name == "DELT")         return delt;
     else if(name == "L_HIST")  return history_length;
     else if(name == "NAGENTS") return n_agents;
