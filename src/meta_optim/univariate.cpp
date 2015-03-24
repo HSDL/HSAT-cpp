@@ -11,7 +11,7 @@ void UnivariateSearch::solve(int max_iter, bool verb){
     Parameters p_current;
 
     // Stores a new value
-    double new_val = 0;
+    long double new_val = 0;
 
     // Keeps track of whether or not an edge solution has been found
     bool EDGE_SOLUTION;
@@ -20,16 +20,16 @@ void UnivariateSearch::solve(int max_iter, bool verb){
     bool APPROACHING_BOUND;
 
     // Stores values to feed to quadratic regression
-    vector<double> X(static_cast <unsigned long> (p_best.n_reps), 0.0);
-    vector<double> Y(static_cast <unsigned long> (p_best.n_reps), 0.0);
+    vector<long double> X(static_cast <unsigned long> (p_best.n_reps), 0.0);
+    vector<long double> Y(static_cast <unsigned long> (p_best.n_reps), 0.0);
 
     // Instantiate a team list
 //    vector<Team> team_list;
 
     // Stores the results from the quadratic regression
-    vector<double> quad_res;
-    double temp_ub;
-    double temp_lb;
+    vector<long double> quad_res;
+    long double temp_ub;
+    long double temp_lb;
 
     // If verbose option is turned on, print some things!
     if(verb) {

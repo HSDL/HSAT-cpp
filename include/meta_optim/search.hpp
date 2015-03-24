@@ -12,10 +12,10 @@ public:
     //// Variables
     Parameters p_best;       // The parameters of the simulation
     vector<string> var_name;
-    vector<double> var_vals;
-    vector<double> lower_lims;
-    vector<double> upper_lims;
-    vector<double> step_sizes;
+    vector<long double> var_vals;
+    vector<long double> lower_lims;
+    vector<long double> upper_lims;
+    vector<long double> step_sizes;
 };
 
 #endif

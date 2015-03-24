@@ -11,9 +11,9 @@ void Search::parse_param_file(string file_name){
     ifstream inputFile(file_name);
     string line;
     string name;
-    double lower_limit;
-    double upper_limit;
-    double temp;
+    long double lower_limit;
+    long double upper_limit;
+    long double temp;
     bool indicator;
 
     while (getline(inputFile, line))
