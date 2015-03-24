@@ -58,8 +58,9 @@ void UnivariateSearch::solve(int max_iter, bool verb){
                 APPROACHING_BOUND = true;
             }
 
-            // Make a vector of teams
-            for (int j = 0; j < p_best.n_reps; j++) {
+            // Initialize vectors for regression
+            for (int j = 0; j < p_best.n_reps; j++){
+
                 // Define a new value
                 new_val = uniform(temp_ub, temp_lb);
 
@@ -68,17 +69,20 @@ void UnivariateSearch::solve(int max_iter, bool verb){
                 p_current.set_from_pair(var_name[i], new_val);
 
                 // Save the new value (this takes advantage of rounding when pushed to parameter set
-                X[j] = p_current.get_from_name(var_name[i]);
+                X.push_back(p_current.get_from_name(var_name[i]));
 
                 // Run a team with that value
-                Team temp(p_current);
-                temp.new_start();
-                temp.solve();
-                Y[j] = temp.best_solution.back();
+                Team T(p_current);
+                T.new_start();
+                T.solve();
+                Y.push_back(T.best_solution.back());
             }
 
             // Now, perform regression with Y and X
             quad_res = quad_max(X, Y);
+            X.clear();
+            Y.clear();
+
             if(quad_res[3] > 0.01) {
                 p_best.set_from_pair(var_name[i], quad_res[0]);
                 var_vals[i] = p_best.get_from_name(var_name[i]);

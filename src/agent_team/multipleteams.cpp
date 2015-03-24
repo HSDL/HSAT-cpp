@@ -33,29 +33,19 @@ MultipleTeams::MultipleTeams(string file_name){
 //// This actually solves the problem LOTS of times.
 long double MultipleTeams::solve(void){
 
-    // Make a vector of teams
-    vector<Team> team_list;
     for(int i=0; i<p.n_reps; i++) {
-        Team temp(p);
-        team_list.push_back(temp);
-    }
+        // Instantiate a new team
+        Team T(p);
 
-    // Give each team a new start
-    for(int i=0; i<p.n_reps; i++) {
         // Give the team a new start
-        team_list[i].new_start();
-    }
+        T.new_start();
 
-    // Run the solution loop in parallel
-    for(int i=0; i<p.n_reps; i++) {
         // Solve the problem with the team
-        team_list[i].solve();
-    }
+        T.solve();
 
-    // Save results
-    for(int i=0; i<p.n_reps; i++) {
-        cdf[i] = team_list[i].best_solution.back();
-        best_solution[i] = team_list[i].best_solution;
+        // Save results
+        cdf[i] = T.best_solution.back();
+        best_solution[i] = T.best_solution;
     }
 
     // Sort the cdf vector
