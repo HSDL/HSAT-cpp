@@ -7,12 +7,12 @@
 using namespace std;
 
 // Define the Griewank function
-double griewank(vector<double> x);
+long double griewank(vector<long double> x);
 
 // Define the Griewank function
-double ackley(vector<double> x);
+long double ackley(vector<long double> x);
 
 // Define the Griewank function
-double rastigrin(vector<double> x);
+long double rastigrin(vector<long double> x);
 
 #endif

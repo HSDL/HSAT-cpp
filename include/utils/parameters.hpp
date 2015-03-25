@@ -17,24 +17,24 @@ public:
     int n_reps;
     int max_iter;
     int D;
-    double ub;
-    double lb;
+    long double ub;
+    long double lb;
     string function;
 
     bool adaptive;
     bool interacting;
     int history_length;
     int n_agents;
-    double temp_init;
-    double delt;
+    long double temp_init;
+    long double delt;
 
     //// Functions
     Parameters(void);
     void set_from_file(string file_name);
-    void set_from_pair(string name, double x);
+    void set_from_pair(string name, long double x);
     void print_params(void);
-    double get_from_name(string name);
-    double obj(vector<double> x);
+    long double get_from_name(string name);
+    long double obj(vector<long double> x);
 
 private:
     //nothing yet

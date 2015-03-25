@@ -1,16 +1,18 @@
 #include "../../include/agent_team/agent.hpp"
 
 //// Necessary definitions of static vectors for sharing between agents.
-vector<double> Agent::all_fx_current;
-vector< vector<double> > Agent::all_xx_current;
+vector<long double> Agent::all_fx_current;
+vector< vector<long double> > Agent::all_xx_current;
 
 //// Inline Agent constructor for accessing static vectors
 Agent::Agent(void){}
 
 //// Normal agent constructor, take one int
 Agent::Agent(int ID, Parameters x){
+    // Save the list of parameters
     p = x;
-    // Remember your god-given name!
+
+    // Remember your damn name, agent
     id = ID;
 
     // The beginning is usually the best place to start
@@ -20,7 +22,7 @@ Agent::Agent(int ID, Parameters x){
     // If you are not the last agent to be instantiated, grow the sharing vectors.
     if(all_fx_current.size() < p.n_agents) {
         all_fx_current.push_back(0.0);
-        vector<double> temp(static_cast <unsigned long> (p.D), 0.0);
+        vector<long double> temp(static_cast <unsigned long> (p.D), 0.0);
         all_xx_current.push_back(temp);
     }
 }
@@ -38,12 +40,12 @@ void Agent::new_start(void){
 }
 
 //// Generated a candidate solution using Cauchy distribution.
-vector<double> Agent::candidate_solution(void){
+vector<long double> Agent::candidate_solution(void){
     // Make some variable for use in this function
-    vector<double> candidate; // stores the candidate solution
-    vector<double> urv;       // A uniform random vector
-    vector<double> w;         // Vector of weights across agents
-    double wmax;              // Maximum in weight vector
+    vector<long double> candidate; // stores the candidate solution
+    vector<long double> urv;       // A uniform random vector
+    vector<long double> w;         // Vector of weights across agents
+    long double wmax;              // Maximum in weight vector
     int j;                    // Index for random draw
 
     // Random draw to get candidate starting position
@@ -87,9 +89,9 @@ vector<double> Agent::candidate_solution(void){
 void Agent::iterate(int iter){
     // Make some variable for use in this function
     iteration_number = iter; // Save the god-given iteration as the current iteration
-    vector<double> x_cand;   // Vector for saving new candidate solution
-    double fx_cand;          // Objective function value of current solution
-    double p_accept;                // Probability of accepting new solution
+    vector<long double> x_cand;   // Vector for saving new candidate solution
+    long double fx_cand;          // Objective function value of current solution
+    long double p_accept;                // Probability of accepting new solution
 
     // Generate a new solution
     x_cand = candidate_solution();
@@ -104,9 +106,6 @@ void Agent::iterate(int iter){
         // Save locally
         x_current = x_cand;
         fx_current = fx_cand;
-        // Push to other agents
-        all_fx_current[id] = fx_current;
-        all_xx_current[id] = x_current;
     } else {
         // If not, accept with some probability
         p_accept = exp((fx_current - fx_cand)/Ti);
@@ -114,9 +113,6 @@ void Agent::iterate(int iter){
             // Save locally
             x_current = x_cand;
             fx_current = fx_cand;
-            // Push to other agents
-            all_fx_current[id] = fx_current;
-            all_xx_current[id] = x_current;
         }
     }
 
@@ -171,9 +167,9 @@ void Agent::update_temp(void) {
 
 
 // This function updates Triki
-double Agent::update_triki(){
-    double q_std = stdev(history);
-    double update_factor = p.delt * Ti / pow(q_std, 2);
+long double Agent::update_triki(){
+    long double q_std = stdev(history);
+    long double update_factor = p.delt * Ti / pow(q_std, 2);
     if (q_std > 0.0) {
         if (update_factor > 1.0) {
             // Update delt and update_factor
@@ -191,6 +187,6 @@ double Agent::update_triki(){
     }
 }
 
-double Agent::update_cauchy(void){
-     return p.temp_init / (1 + p.delt * (static_cast <double> (iteration_number)));
+long double Agent::update_cauchy(void){
+     return p.temp_init / (1 + p.delt * (static_cast <long double> (iteration_number)));
 }

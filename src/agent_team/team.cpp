@@ -4,20 +4,19 @@
 Team::Team(Parameters x){
     p = x;
     // Make a vector of the appropriate length for storing things.
-    vector<double> temp(static_cast <unsigned long> (p.max_iter/(static_cast <double> (p.n_agents))), 0.0);
+    vector<long double> temp(static_cast <unsigned long> (p.max_iter/(static_cast <long double> (p.n_agents))), 0.0);
     best_solution = temp;
 }
 
 //// Give the team a new start
 void Team::new_start(void){
     // Reset the vector for sharing the best solutions
-    agent_list[0].all_fx_current.clear();
-    agent_list[0].all_xx_current.clear();
+    Agent().all_fx_current.clear();
+    Agent().all_xx_current.clear();
 
     // Create agent list
     for(int i=0; i<p.n_agents; i++){
-        Agent a(i, p);
-        agent_list.push_back(a);
+        agent_list.push_back(Agent(i, p));
     }
 
     // Give agents starting locations
@@ -35,6 +34,13 @@ void Team::iterate(int iter){
     for(int i=0; i<agent_list.size(); i++){
         agent_list[i].iterate(iter);
     }
+
+    // Share new results between agents
+    for(int i=0; i<agent_list.size(); i++) {
+        Agent().all_fx_current[agent_list[i].id] = agent_list[i].fx_current;
+        Agent().all_xx_current[agent_list[i].id] = agent_list[i].x_current;
+    }
+
     if (p.n_reps == 1){
         cout << endl;
     }
@@ -44,7 +50,7 @@ void Team::iterate(int iter){
 //// Solve the team
 void Team::solve(void){
     // Iterate many times, and save the best solution each time
-    for(int i=1; i<p.max_iter/(double)p.n_agents; i++){
+    for(int i=1; i<p.max_iter/(long double)p.n_agents; i++){
         // Do the iteration
         iterate(i);
 

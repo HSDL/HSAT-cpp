@@ -10,18 +10,18 @@ void UnivariateSearch::solve(int max_iter, bool verb){
     current_iteration = 0;
     Parameters p_current;
     // Stores a new value
-    double new_val = 0;
+    long double new_val = 0;
     // Keeps track of whether or not an edge solution has been found
     bool EDGE_SOLUTION;
     // Keeps track of whether a bound is being approached
     bool APPROACHING_BOUND;
     // Stores values to feed to quadratic regression
-    vector<double> X;
-    vector<double> Y;
+    vector<long double> X;
+    vector<long double> Y;
     // Stores the results from the quadratic regression
-    vector<double> quad_res;
-    double temp_ub;
-    double temp_lb;
+    vector<long double> quad_res;
+    long double temp_ub;
+    long double temp_lb;
     if(verb) {
         cout << "\nBeginning Optimization Routine" << endl;
     }

@@ -20,21 +20,21 @@ public:
     Parameters p;             // A parameters structure that holds much of the SA info
     int id;                   // Agent ID, tells it where to store info in static vectors.
     int iteration_number;     // The number of the current iteration
-    double Ti;                // The current temperature
-    double fx_current;        // The function value of the current solution
-    vector<double> x_current; // The value of the current solution
-    deque<double> history;   // History of quality
+    long double Ti;                // The current temperature
+    long double fx_current;        // The function value of the current solution
+    vector<long double> x_current; // The value of the current solution
+    deque<long double> history;   // History of quality
 
     //// Accessible everywhere
-    static vector<double> all_fx_current;         // Function value of all agents current solutions
-    static vector< vector<double> > all_xx_current; // All agents current solutions
+    static vector<long double> all_fx_current;         // Function value of all agents current solutions
+    static vector< vector<long double> > all_xx_current; // All agents current solutions
 
 private:
     //// Functions
-    vector<double> candidate_solution(void); // Generated a candidate solution usign Cauchy distribution.
+    vector<long double> candidate_solution(void); // Generated a candidate solution usign Cauchy distribution.
     void update_temp(void);                  // Updates the temperature.
-    double update_triki(void);
-    double update_cauchy(void);
+    long double update_triki(void);
+    long double update_cauchy(void);
 };
 
 #endif

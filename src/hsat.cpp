@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
     gettimeofday(&start, NULL);
 
     // Variables to figure out what's going on
-    double delta;
+    long double delta;
     int max_iter = 10;
     bool bench = false;
     bool univariate = false;
@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
 
     // Run benchmarking
     if(bench){
-        double fxmean = 0;
+        long double fxmean = 0;
         // Initialize it
         MultipleTeams MT(input);
 
