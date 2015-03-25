@@ -9,29 +9,19 @@ void UnivariateSearch::solve(int max_iter, bool verb){
     // Stores the current iteration and values
     current_iteration = 0;
     Parameters p_current;
-
     // Stores a new value
     double new_val = 0;
-
     // Keeps track of whether or not an edge solution has been found
     bool EDGE_SOLUTION;
-
     // Keeps track of whether a bound is being approached
     bool APPROACHING_BOUND;
-
     // Stores values to feed to quadratic regression
-    vector<double> X(static_cast <unsigned long> (p_best.n_reps), 0.0);
-    vector<double> Y(static_cast <unsigned long> (p_best.n_reps), 0.0);
-
-    // Instantiate a team list
-//    vector<Team> team_list;
-
+    vector<double> X;
+    vector<double> Y;
     // Stores the results from the quadratic regression
     vector<double> quad_res;
     double temp_ub;
     double temp_lb;
-
-    // If verbose option is turned on, print some things!
     if(verb) {
         cout << "\nBeginning Optimization Routine" << endl;
     }
@@ -75,14 +65,12 @@ void UnivariateSearch::solve(int max_iter, bool verb){
                 Team T(p_current);
                 T.new_start();
                 T.solve();
+//                Y.push_back(log10(T.best_solution.back()));
                 Y.push_back(T.best_solution.back());
             }
 
             // Now, perform regression with Y and X
             quad_res = quad_max(X, Y);
-            X.clear();
-            Y.clear();
-
             if(quad_res[3] > 0.01) {
                 p_best.set_from_pair(var_name[i], quad_res[0]);
                 var_vals[i] = p_best.get_from_name(var_name[i]);
@@ -94,15 +82,16 @@ void UnivariateSearch::solve(int max_iter, bool verb){
                 }
             }
 
-            // Output is verbose option is chosen
             if(verb) {
                 cout << " = " << quad_res[0]
                         << ", mean = " << quad_res[2]
                         << ", r2 = " << quad_res[3]
                         << ", " << (EDGE_SOLUTION ? "edge" : "interior") << endl;
             }
-        }
 
+            X.clear();
+            Y.clear();
+        }
         // Halve the step-sizes
         if(!EDGE_SOLUTION) {
             for (int i = 0; i < step_sizes.size(); i++) {
@@ -112,8 +101,6 @@ void UnivariateSearch::solve(int max_iter, bool verb){
                 cout << "\t\t" << "All interior points. Updating step sizes." << endl;
             }
         }
-
-        // Increment the iteration counter
         current_iteration++;
     }
 }
