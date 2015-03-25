@@ -4,7 +4,7 @@ using namespace std;
 
 // This does the things, and initializes p from file
 MultipleTeams::MultipleTeams(Parameters x){
-    // Read from a file
+    // Save the parameters
     p = x;
 
     // Define the vectors that we need with the appropriate length
@@ -12,6 +12,7 @@ MultipleTeams::MultipleTeams(Parameters x){
     vector<vector <long double> > temp2(static_cast <unsigned long> (p.n_reps), temp1);
     vector<long double> temp3(static_cast <unsigned long> (p.n_reps), 0.0);
 
+    // Initialize the best solution and cdf vectors
     best_solution = temp2;
     cdf = temp3;
 }
@@ -33,7 +34,7 @@ MultipleTeams::MultipleTeams(string file_name){
 //// This actually solves the problem LOTS of times.
 long double MultipleTeams::solve(void){
 
-    for(int i=0; i<p.n_reps; i++) {
+    for(int i = 0; i<p.n_reps; i++) {
         // Instantiate a new team
         Team T(p);
 

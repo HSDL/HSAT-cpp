@@ -1,12 +1,12 @@
-FUNC    griewank
-NAGENTS 10
+FUNC    ackley
 ADAPT   1
 INTER   1
-TINIT   1.0
-DELT    10.0
-L_HIST  -10
 NREPS   10
 MAX_IT  10000
 DIMS    10
 UBND    10
 LBND    -10
+NAGENTS 10
+TINIT   1.0
+DELT    10.0
+L_HIST  -10
