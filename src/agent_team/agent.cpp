@@ -104,6 +104,9 @@ void Agent::iterate(int iter){
         // Save locally
         x_current = x_cand;
         fx_current = fx_cand;
+        // Push to other agents
+        all_fx_current[id] = fx_current;
+        all_xx_current[id] = x_current;
     } else {
         // If not, accept with some probability
         p_accept = exp((fx_current - fx_cand)/Ti);
@@ -111,14 +114,15 @@ void Agent::iterate(int iter){
             // Save locally
             x_current = x_cand;
             fx_current = fx_cand;
+            // Push to other agents
+            all_fx_current[id] = fx_current;
+            all_xx_current[id] = x_current;
         }
     }
 
     if(p.adaptive && p.history_length > 0) {
         history.push_back(fx_current);
     }
-
-
 
     //Update the temperature
     update_temp();

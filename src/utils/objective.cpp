@@ -10,8 +10,8 @@ long double griewank(vector<long double> x){
 
     // Step through every dimensions and do a thing
     for(int i=0; i < x.size(); i++){
-        fx1 += x[i]*x[i];
-        fx2 *= cos(x[i]/sqrt(static_cast <long double> (i+1)));
+        fx1 += 360*x[i]*x[i];
+        fx2 *= cos(60*x[i]/sqrt(static_cast <long double> (i+1)));
     }
 
     // Return a sum of sums
@@ -27,8 +27,8 @@ long double ackley(vector<long double> x){
 
     // Step through every dimensions and do a thing
     for(int i=0; i < D; i++){
-        fx1 += x[i]*x[i];
-        fx2 += cos(2*PI*x[i]);
+        fx1 += (3.2768*x[i])*(3.2768*x[i]);
+        fx2 += cos(2*PI*3.2768*x[i]);
     }
 
     // Return a sum of sums
