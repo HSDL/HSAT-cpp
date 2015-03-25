@@ -2,7 +2,7 @@
 
 //// This returns a uniform double between upper and lower bounds
 double uniform(double ub, double lb){
-    return lb + static_cast <double> (rand()) /( static_cast <double> (RAND_MAX/(ub-lb)));
+    return lb + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(ub-lb)));
 }
 
 //// Seeds rand with the current time
