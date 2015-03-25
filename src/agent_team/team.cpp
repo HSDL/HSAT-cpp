@@ -29,24 +29,6 @@ void Team::new_start(void){
     best_solution[0] = vector_min(agent_list[0].all_fx_current);
 };
 
-////// Iterate the team
-//void Team::iterate(int iter){
-//    // Iterate each agent
-//    for(int i=0; i<agent_list.size(); i++){
-//        agent_list[i].iterate(iter);
-//    }
-//
-//    // Share new results between agents
-//    for(int i=0; i<agent_list.size(); i++){
-//        agent_list[0].all_fx_current[agent_list[i].id] = agent_list[i].fx_current;
-//        agent_list[0].all_xx_current[agent_list[i].id] = agent_list[i].x_current;
-//    }
-//
-//    if (p.n_reps == 1){
-//        cout << endl;
-//    }
-//}
-
 //// Iterate the team
 void Team::iterate(int iter){
     // Iterate each agent
