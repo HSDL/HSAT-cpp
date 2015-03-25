@@ -65,7 +65,6 @@ void UnivariateSearch::solve(int max_iter, bool verb){
                 Team T(p_current);
                 T.new_start();
                 T.solve();
-//                Y.push_back(log10(T.best_solution.back()));
                 Y.push_back(T.best_solution.back());
             }
 
