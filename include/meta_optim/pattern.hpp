@@ -14,7 +14,7 @@ public:
 
     //// Variables
     int current_iteration;
-    long double fx_best;
+    double fx_best;
 
 private:
     // nothing yet

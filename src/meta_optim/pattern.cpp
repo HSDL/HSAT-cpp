@@ -8,8 +8,8 @@ PatternSearch::PatternSearch(string file_name){
 void PatternSearch::solve(int max_iter, bool verb){
     // Do some initial things
     current_iteration = 0;
-    long double fx_current;
-    long double new_val;
+    double fx_current;
+    double new_val;
     bool IMPROVED;
     Parameters p_current;
 

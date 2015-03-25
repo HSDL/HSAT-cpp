@@ -1,9 +1,9 @@
 #include "../../include/utils/stats.hpp"
 
 //// Return the largest element in a vector.
-long double vector_max(vector<long double> v){
-    long double max = -DBL_MAX;
-    for(vector<long double>::iterator it = v.begin(); it != v.end(); ++it) {
+double vector_max(vector<double> v){
+    double max = -DBL_MAX;
+    for(vector<double>::iterator it = v.begin(); it != v.end(); ++it) {
         if(*it > max){
             max = *it;
         }
@@ -12,9 +12,9 @@ long double vector_max(vector<long double> v){
 }
 
 //// Returns the smallest element in a vector.
-long double vector_min(vector<long double> v){
-    long double min = DBL_MAX;
-    for(vector<long double>::iterator it = v.begin(); it != v.end(); ++it) {
+double vector_min(vector<double> v){
+    double min = DBL_MAX;
+    for(vector<double>::iterator it = v.begin(); it != v.end(); ++it) {
         if(*it < min){
             min = *it;
         }
@@ -24,15 +24,15 @@ long double vector_min(vector<long double> v){
 
 
 // Compute mean of a vector
-long double mean(vector<long double> x) {
+double mean(vector<double> x) {
     return accumulate(x.begin(), x.end(), 0.0) / x.size();
 }
 
 // Compute mean of a deque
-long double mean(deque<long double> x) {
-    long double sum = 0;
+double mean(deque<double> x) {
+    double sum = 0;
 
-    for(deque<long double>::iterator j=x.begin(); j!=x.end();++j){
+    for(deque<double>::iterator j=x.begin(); j!=x.end();++j){
         sum += *j;
     }
 
@@ -40,11 +40,11 @@ long double mean(deque<long double> x) {
 }
 
 // Compute standard deviation of a vector
-long double stdev(deque<long double> x) {
-    long double mean_val = mean(x);
-    long double s = 0;
+double stdev(deque<double> x) {
+    double mean_val = mean(x);
+    double s = 0;
 
-    for(deque<long double>::iterator j=x.begin(); j!=x.end();++j){
+    for(deque<double>::iterator j=x.begin(); j!=x.end();++j){
         s += pow((*j - mean_val), 2.0);
     }
 
@@ -52,20 +52,20 @@ long double stdev(deque<long double> x) {
 }
 
 // Compute the x value fo the optimium of a linear regression
-vector<long double> quad_max(vector<long double> x, vector<long double> y){
+vector<double> quad_max(vector<double> x, vector<double> y){
 
     // Initialize things
-    vector<long double> Y(4, 0);
-    vector< vector<long double> > A(3, Y);
-    vector<long double> xx;
-    long double n = 0;
-    long double x1 = 0;
-    long double x2 = 0;
-    long double x3 = 0;
-    long double x4 = 0;
-    long double y1 = 0;
-    long double yx1 = 0;
-    long double yx2 = 0;
+    vector<double> Y(4, 0);
+    vector< vector<double> > A(3, Y);
+    vector<double> xx;
+    double n = 0;
+    double x1 = 0;
+    double x2 = 0;
+    double x3 = 0;
+    double x4 = 0;
+    double y1 = 0;
+    double yx1 = 0;
+    double yx2 = 0;
 
     // Calculate some sums that will be necessary
     for(int i=0; i < x.size(); i++) {
@@ -95,9 +95,9 @@ vector<long double> quad_max(vector<long double> x, vector<long double> y){
 
     xx = gauss(A);
 
-    long double x_loc;
-    long double x_min = vector_min(x);
-    long double x_max = vector_max(x);
+    double x_loc;
+    double x_min = vector_min(x);
+    double x_max = vector_max(x);
 
     // Check to make sure the equation is concave up
     if(xx[2] > 0){
@@ -117,15 +117,15 @@ vector<long double> quad_max(vector<long double> x, vector<long double> y){
     x_loc = max(x_loc, x_min);
 
     // Compute the r-squared value
-    long double sse_mean = 0;
-    long double sse_reg = 0;
-    long double my = mean(y);
+    double sse_mean = 0;
+    double sse_reg = 0;
+    double my = mean(y);
     for(int i=0; i < y.size(); i++){
         sse_mean += pow(y[i] - my, 2);
         sse_reg  += pow(xx[0] + x[i]*xx[1] +x[i]*x[i]*xx[2] - y[i], 2);
     }
 
-    vector<long double> results;
+    vector<double> results;
     results.push_back(x_loc);
     results.push_back(xx[0] + x_loc*xx[1] +x_loc*x_loc*xx[2]);
     results.push_back(my);
@@ -135,14 +135,14 @@ vector<long double> quad_max(vector<long double> x, vector<long double> y){
 
 }
 
-vector<long double> gauss(vector< vector<long double> > A) {
+vector<double> gauss(vector< vector<double> > A) {
     // From http://martin-thoma.com/solving-linear-equations-with-gaussian-elimination/
 
     int n = static_cast <int> (A.size());
 
     for (int i=0; i<n; i++) {
         // Search for maximum in this column
-        long double maxEl = abs(A[i][i]);
+        double maxEl = abs(A[i][i]);
         int maxRow = i;
         for (int k=i+1; k<n; k++) {
             if (abs(A[k][i]) > maxEl) {
@@ -153,14 +153,14 @@ vector<long double> gauss(vector< vector<long double> > A) {
 
         // Swap maximum row with current row (column by column)
         for (int k=i; k<n+1;k++) {
-            long double tmp = A[maxRow][k];
+            double tmp = A[maxRow][k];
             A[maxRow][k] = A[i][k];
             A[i][k] = tmp;
         }
 
         // Make all rows below this one 0 in current column
         for (int k=i+1; k<n; k++) {
-            long double c = -A[k][i]/A[i][i];
+            double c = -A[k][i]/A[i][i];
             for (int j=i; j<n+1; j++) {
                 if (i==j) {
                     A[k][j] = 0;
@@ -172,7 +172,7 @@ vector<long double> gauss(vector< vector<long double> > A) {
     }
 
     // Solve equation Ax=b for an upper triangular matrix A
-    vector<long double> x(static_cast <unsigned long> (n));
+    vector<double> x(static_cast <unsigned long> (n));
     for (int i=n-1; i>=0; i--) {
         x[i] = A[i][n]/A[i][i];
         for (int k=i-1;k>=0; k--) {

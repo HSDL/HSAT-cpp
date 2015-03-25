@@ -4,7 +4,7 @@
 Team::Team(Parameters x){
     p = x;
     // Make a vector of the appropriate length for storing things.
-    vector<long double> temp(static_cast <unsigned long> (p.max_iter/(static_cast <double> (p.n_agents))), 0.0);
+    vector<double> temp(static_cast <unsigned long> (p.max_iter/(static_cast <double> (p.n_agents))), 0.0);
     best_solution = temp;
 }
 

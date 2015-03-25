@@ -10,8 +10,8 @@ void print(double x){
     cout<<x<<endl;
 }
 
-//// Function to print a long double
-void print(long double x){
+//// Function to print a double
+void print(double x){
     cout<<x<<endl;
 }
 
@@ -38,7 +38,7 @@ void print(vector<double> x){
 
 
 //// Function to print a vector. Black magic.
-void print(vector<long double> x){
+void print(vector<double> x){
     int end = static_cast <int> (x.size()-1);
     cout<<scientific<<"[ ";
     for(int i=0; i<x.size(); i++){
@@ -99,7 +99,7 @@ void save_to_file(string file_path, vector< vector<double> > x){
 
 
 //// Save a vector to a file
-void save_to_file(string file_path, vector<long double> x){
+void save_to_file(string file_path, vector<double> x){
     // Open a file stream
     ofstream my_file;
 
@@ -120,7 +120,7 @@ void save_to_file(string file_path, vector<long double> x){
 
 
 //// Save a vector of vectors to file. This happens a lot, actually.
-void save_to_file(string file_path, vector< vector<long double> > x){
+void save_to_file(string file_path, vector< vector<double> > x){
     // Open a file stream
     ofstream my_file;
 

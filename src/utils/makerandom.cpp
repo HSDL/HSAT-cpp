@@ -1,8 +1,8 @@
 #include "../../include/utils/makerandom.hpp"
 
 //// This returns a uniform double between upper and lower bounds
-long double uniform(long double ub, long double lb){
-    return lb + static_cast <long double> (rand()) /( static_cast <long double> (RAND_MAX/(ub-lb)));
+double uniform(double ub, double lb){
+    return lb + static_cast <double> (rand()) /( static_cast <double> (RAND_MAX/(ub-lb)));
 }
 
 //// Seeds rand with the current time
@@ -11,9 +11,9 @@ void seed_time(void){
 }
 
 //// Creates a random vector
-vector<long double> random_vector(int D, long double ub, long double lb){
+vector<double> random_vector(int D, double ub, double lb){
     // Initialize a vector
-    vector<long double> x(static_cast <unsigned long> (D), 0.0);
+    vector<double> x(static_cast <unsigned long> (D), 0.0);
 
     // Create the elements in that vector
     for(int i=0; i<D; i++){
@@ -26,10 +26,10 @@ vector<long double> random_vector(int D, long double ub, long double lb){
 
 
 // Weighted random choice function
-int weighted_choice(vector<long double> x){
+int weighted_choice(vector<double> x){
     // Get the sum of the vector
-    long double sum = 0;
-    for(vector<long double>::iterator j=x.begin(); j!=x.end();++j)
+    double sum = 0;
+    for(vector<double>::iterator j=x.begin(); j!=x.end();++j)
         sum += *j;
 
     // Get a random value somewhere within the vector CDF

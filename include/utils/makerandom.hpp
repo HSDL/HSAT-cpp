@@ -9,15 +9,15 @@
 using namespace std;
 
 // Function to return a uniform double
-long double uniform(long double ub, long double lb);
+double uniform(double ub, double lb);
 
 // Function to seed wrt time
 void seed_time(void);
 
 // Function to return a uniform random vector
-vector<long double> random_vector(int D, long double ub, long double lb);
+vector<double> random_vector(int D, double ub, double lb);
 
 // Weighted random choice function
-int weighted_choice(vector<long double> x);
+int weighted_choice(vector<double> x);
 
 #endif
