@@ -80,11 +80,14 @@ vector<long double> Agent::candidate_solution(void){
 
 //// A function to perform an iteration of SA.
 void Agent::iterate(int iter){
-    // Make some variable for use in this function
-    iteration_number = iter; // Save the god-given iteration as the current iteration
-    vector<long double> x_cand;   // Vector for saving new candidate solution
-    long double fx_cand;          // Objective function value of current solution
-    long double p_accept;                // Probability of accepting new solution
+    // Save the god-given iteration as the current iteration
+    iteration_number = iter;
+
+    // Vector for saving new candidate solution
+    vector<long double> x_cand(static_cast <unsigned long> (p.D), 0.0);
+
+    // Objective function value of current solution, and probability of accepting new solution
+    long double fx_cand, p_accept;
 
     // Generate a new solution
     x_cand = candidate_solution();

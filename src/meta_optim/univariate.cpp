@@ -16,8 +16,8 @@ void UnivariateSearch::solve(int max_iter, bool verb){
     // Keeps track of whether a bound is being approached
     bool APPROACHING_BOUND;
     // Stores values to feed to quadratic regression
-    vector<long double> X;
-    vector<long double> Y;
+    vector<long double> X(static_cast <unsigned long> (p_best.n_reps), 0.0);
+    vector<long double> Y(static_cast <unsigned long> (p_best.n_reps), 0.0);
     // Stores the results from the quadratic regression
     vector<long double> quad_res;
     long double temp_ub;
@@ -59,13 +59,13 @@ void UnivariateSearch::solve(int max_iter, bool verb){
                 p_current.set_from_pair(var_name[i], new_val);
 
                 // Save the new value (this takes advantage of rounding when pushed to parameter set
-                X.push_back(p_current.get_from_name(var_name[i]));
+                X[i] = p_current.get_from_name(var_name[i]);
 
                 // Run a team with that value
                 Team T(p_current);
                 T.new_start();
                 T.solve();
-                Y.push_back(T.best_solution.back());
+                Y[i] = T.best_solution.back();
             }
 
             // Now, perform regression with Y and X
@@ -88,8 +88,6 @@ void UnivariateSearch::solve(int max_iter, bool verb){
                         << ", " << (EDGE_SOLUTION ? "edge" : "interior") << endl;
             }
 
-            X.clear();
-            Y.clear();
         }
         // Halve the step-sizes
         if(!EDGE_SOLUTION) {
