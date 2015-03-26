@@ -55,26 +55,25 @@ long double stdev(deque<long double> x) {
 vector<long double> quad_max(vector<long double> x, vector<long double> y){
 
     // Initialize things
-    vector<long double> Y(4, 0);
-    vector< vector<long double> > A(3, Y);
+    vector< vector<long double> > A(3, vector<long double>(4, 0.0));
     vector<long double> xx;
-    long double n = 0;
-    long double x1 = 0;
-    long double x2 = 0;
-    long double x3 = 0;
-    long double x4 = 0;
-    long double y1 = 0;
-    long double yx1 = 0;
-    long double yx2 = 0;
+    long double n   = 0.0;
+    long double x1  = 0.0;
+    long double x2  = 0.0;
+    long double x3  = 0.0;
+    long double x4  = 0.0;
+    long double y1  = 0.0;
+    long double yx1 = 0.0;
+    long double yx2 = 0.0;
 
     // Calculate some sums that will be necessary
     for(int i=0; i < x.size(); i++) {
-        n += 1;
-        x1 += x[i];
-        x2 += x[i]*x[i];
-        x3 += x[i]*x[i]*x[i];
-        x4 += x[i]*x[i]*x[i]*x[i];
-        y1 += y[i];
+        n   += 1;
+        x1  += x[i];
+        x2  += x[i]*x[i];
+        x3  += x[i]*x[i]*x[i];
+        x4  += x[i]*x[i]*x[i]*x[i];
+        y1  += y[i];
         yx1 += y[i]*x[i];
         yx2 += y[i]*x[i]*x[i];
     }

@@ -7,14 +7,12 @@ MultipleTeams::MultipleTeams(Parameters x){
     // Save the parameters
     p = x;
 
-    // Define the vectors that we need with the appropriate length
-    vector<long double> temp1(static_cast <unsigned long> (p.max_iter/(long double)p.n_agents), 0.0);
-    vector<vector <long double> > temp2(static_cast <unsigned long> (p.n_reps), temp1);
-    vector<long double> temp3(static_cast <unsigned long> (p.n_reps), 0.0);
+    // Initialize the best solution vector
+    best_solution.assign(static_cast <unsigned long> (p.n_reps),
+            vector<long double>(static_cast <unsigned long> (p.max_iter/(long double)p.n_agents), 0.0));
 
-    // Initialize the best solution and cdf vectors
-    best_solution = temp2;
-    cdf = temp3;
+    // Initialize the cdf vector
+    cdf.assign(static_cast <unsigned long> (p.n_reps), 0.0);
 }
 
 // This does the things, and initializes p from file
@@ -22,13 +20,12 @@ MultipleTeams::MultipleTeams(string file_name){
     // Read from a file
     p.set_from_file(file_name);
 
-    // Define the vectors that we need with the appropriate length
-    vector<long double> temp1(static_cast <unsigned long> (p.max_iter/(long double)p.n_agents), 0.0);
-    vector< vector<long double> > temp2(static_cast <unsigned long> (p.n_reps), temp1);
-    vector<long double> temp3(static_cast <unsigned long> (p.n_reps), 0.0);
+    // Initialize the best solution vector
+    best_solution.assign(static_cast <unsigned long> (p.n_reps),
+            vector<long double>(static_cast <unsigned long> (p.max_iter/(long double)p.n_agents), 0.0));
 
-    best_solution = temp2;
-    cdf = temp3;
+    // Initialize the cdf vector
+    cdf.assign(static_cast <unsigned long> (p.n_reps), 0.0);
 }
 
 //// This actually solves the problem LOTS of times.
