@@ -10,14 +10,16 @@ Team::Team(Parameters x){
 
 //// Give the team a new start
 void Team::new_start(void){
-    // Reset the vector for sharing the best solutions
-    Agent().all_fx_current.clear();
-    Agent().all_xx_current.clear();
 
     // Create agent list
     for(int i=0; i<p.n_agents; i++){
         agent_list.push_back(Agent(i, p));
     }
+
+    // Instantiate the sharing vectors for agents
+    Agent().all_fx_current.assign(static_cast <unsigned long> (p.n_agents), 0.0);
+    Agent().all_xx_current.assign(static_cast <unsigned long> (p.n_agents),
+            vector<long double>(static_cast <unsigned long> (p.D)));
 
     // Give agents starting locations
     for(int i=0; i<p.n_agents; i++){

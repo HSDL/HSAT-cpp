@@ -18,13 +18,6 @@ Agent::Agent(int ID, Parameters x){
     // The beginning is usually the best place to start
     iteration_number = 0;
     Ti = p.temp_init;
-
-    // If you are not the last agent to be instantiated, grow the sharing vectors.
-    if(all_fx_current.size() < p.n_agents) {
-        all_fx_current.push_back(0.0);
-        vector<long double> temp(static_cast <unsigned long> (p.D), 0.0);
-        all_xx_current.push_back(temp);
-    }
 }
 
 //// A function that selects a random starting point, and pushes it to other agents.
