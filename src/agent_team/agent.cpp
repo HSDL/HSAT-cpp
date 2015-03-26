@@ -163,7 +163,7 @@ void Agent::update_temp(void) {
 
 
 // This function updates Triki
-long double Agent::update_triki(){
+long double Agent::update_triki(void){
     long double q_std = stdev(history);
     long double update_factor = p.delt * Ti / pow(q_std, 2);
     if (q_std > 0.0) {

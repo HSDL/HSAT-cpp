@@ -2,10 +2,9 @@
 #include "../include/meta_optim/univariate.hpp"
 #include "../include/meta_optim/pattern.hpp"
 #include "../include/utils/customprint.hpp"
-#include "../include/utils/makerandom.hpp"
 #include <sys/time.h>
 
-using namespace std;
+//using namespace std;
 
 int main(int argc, char *argv[]) {
     // Random seed
@@ -63,6 +62,7 @@ int main(int argc, char *argv[]) {
     // Run benchmarking
     if(bench){
         long double fxmean = 0;
+
         // Initialize it
         MultipleTeams MT(input);
 
