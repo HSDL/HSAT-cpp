@@ -59,13 +59,13 @@ void UnivariateSearch::solve(int max_iter, bool verb){
                 p_current.set_from_pair(var_name[i], new_val);
 
                 // Save the new value (this takes advantage of rounding when pushed to parameter set
-                X[i] = p_current.get_from_name(var_name[i]);
+                X[j] = p_current.get_from_name(var_name[i]);
 
                 // Run a team with that value
                 Team T(p_current);
                 T.new_start();
                 T.solve();
-                Y[i] = T.best_solution.back();
+                Y[j] = T.best_solution.back();
             }
 
             // Now, perform regression with Y and X
