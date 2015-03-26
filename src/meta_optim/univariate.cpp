@@ -9,15 +9,20 @@ void UnivariateSearch::solve(int max_iter, bool verb){
     // Stores the current iteration and values
     current_iteration = 0;
     Parameters p_current;
+
     // Stores a new value
     long double new_val = 0;
+
     // Keeps track of whether or not an edge solution has been found
     bool EDGE_SOLUTION;
+
     // Keeps track of whether a bound is being approached
     bool APPROACHING_BOUND;
+
     // Stores values to feed to quadratic regression
     vector<long double> X(static_cast <unsigned long> (p_best.n_reps), 0.0);
     vector<long double> Y(static_cast <unsigned long> (p_best.n_reps), 0.0);
+
     // Stores the results from the quadratic regression
     vector<long double> quad_res;
     long double temp_ub;
