@@ -44,8 +44,9 @@ void PatternSearch::solve(int max_iter, bool verb){
                 p_current.set_from_pair(var_name[i], new_val);
 
                 // Evalute the new combination
-                MultipleTeams MTR(p_current);
-                fx_current = MTR.solve();
+//                MultipleTeams MTR(p_current);
+//                fx_current = MTR.solve();
+                fx_current = 1.00;
                 cout << "fx = " << fx_current << endl;
 
                 // Keep track of the best solution
