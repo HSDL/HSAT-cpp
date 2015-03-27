@@ -14,8 +14,8 @@ void PatternSearch::solve(int max_iter, bool verb){
     Parameters p_current;
 
     // Find average initial quality
-    MultipleTeams MT(p_best);
-    fx_best = MT.solve();
+    MultipleTeams MT1(p_best);
+    fx_best = MT1.solve();
     if(verb) {
         cout << "\nBeginning Optimization Routine, fx = " << fx_best << endl;
     }
@@ -44,8 +44,8 @@ void PatternSearch::solve(int max_iter, bool verb){
                 p_current.set_from_pair(var_name[i], new_val);
 
                 // Evalute the new combination
-                MultipleTeams MT(p_current);
-                fx_current = MT.solve();
+                MultipleTeams MTR(p_current);
+                fx_current = MTR.solve();
                 cout << "fx = " << fx_current << endl;
 
                 // Keep track of the best solution
