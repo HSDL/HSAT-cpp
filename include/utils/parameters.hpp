@@ -14,9 +14,9 @@ class Parameters{
 public:
     //// Variables
     // Must be set separately
-    int n_reps;
+    unsigned long n_reps;
     unsigned long max_iter;
-    int D;
+    unsigned long D;
     long double ub;
     long double lb;
     string function;
@@ -24,7 +24,7 @@ public:
     bool adaptive;
     bool interacting;
     int history_length;
-    int n_agents;
+    unsigned long n_agents;
     long double temp_init;
     long double delt;
 

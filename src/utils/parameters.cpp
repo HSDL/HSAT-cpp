@@ -60,7 +60,7 @@ void Parameters::print_params(void) {
 void Parameters::set_from_pair(string name, long double x) {
     if(name == "DELT")         delt = x;
     else if(name == "L_HIST")  history_length =static_cast <int> (round(x));
-    else if(name == "NAGENTS") n_agents = static_cast <int> (round(x));
+    else if(name == "NAGENTS") n_agents = static_cast <unsigned long> (round(x));
     else if(name == "TINIT")   temp_init = x;
 }
 

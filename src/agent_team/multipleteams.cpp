@@ -8,11 +8,10 @@ MultipleTeams::MultipleTeams(Parameters x){
     p = x;
 
     // Initialize the best solution vector
-    best_solution.assign(static_cast <unsigned long> (p.n_reps),
-            vector<long double>(static_cast <unsigned long> (p.max_iter/(long double)p.n_agents), 0.0));
+    best_solution.assign(p.n_reps, vector<long double>(p.max_iter/p.n_agents, 0.0));
 
     // Initialize the cdf vector
-    cdf.assign(static_cast <unsigned long> (p.n_reps), 0.0);
+    cdf.assign(p.n_reps, 0.0);
 }
 
 // This does the things, and initializes p from file
@@ -21,11 +20,10 @@ MultipleTeams::MultipleTeams(string file_name){
     p.set_from_file(file_name);
 
     // Initialize the best solution vector
-    best_solution.assign(static_cast <unsigned long> (p.n_reps),
-            vector<long double>(static_cast <unsigned long> (p.max_iter/(long double)p.n_agents), 0.0));
+    best_solution.assign(p.n_reps, vector<long double>(p.max_iter/p.n_agents, 0.0));
 
     // Initialize the cdf vector
-    cdf.assign(static_cast <unsigned long> (p.n_reps), 0.0);
+    cdf.assign(p.n_reps, 0.0);
 }
 
 //// This actually solves the problem LOTS of times.

@@ -20,8 +20,8 @@ void UnivariateSearch::solve(int max_iter, bool verb){
     bool APPROACHING_BOUND;
 
     // Stores values to feed to quadratic regression
-    vector<long double> X(static_cast <unsigned long> (p_best.n_reps), 0.0);
-    vector<long double> Y(static_cast <unsigned long> (p_best.n_reps), 0.0);
+    vector<long double> X(p_best.n_reps, 0.0);
+    vector<long double> Y(p_best.n_reps, 0.0);
 
     // Stores the results from the quadratic regression
     vector<long double> quad_res;

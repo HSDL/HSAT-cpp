@@ -15,7 +15,7 @@ long double uniform(long double ub, long double lb);
 void seed_time(void);
 
 // Function to return a uniform random vector
-vector<long double> random_vector(int D, long double ub, long double lb);
+vector<long double> random_vector(unsigned long D, long double ub, long double lb);
 
 // Weighted random choice function
 int weighted_choice(vector<long double> x);

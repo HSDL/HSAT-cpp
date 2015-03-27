@@ -11,9 +11,9 @@ void seed_time(void){
 }
 
 //// Creates a random vector
-vector<long double> random_vector(int D, long double ub, long double lb){
+vector<long double> random_vector(unsigned long D, long double ub, long double lb){
     // Initialize a vector
-    vector<long double> x(static_cast <unsigned long> (D), 0.0);
+    vector<long double> x(D, 0.0);
 
     // Create the elements in that vector
     for(int i=0; i<D; i++){

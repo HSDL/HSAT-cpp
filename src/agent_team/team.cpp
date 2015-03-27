@@ -4,7 +4,7 @@
 Team::Team(Parameters x){
     p = x;
     // Make a vector of the appropriate length for storing things.
-    best_solution.assign(static_cast <unsigned long> (p.max_iter/(static_cast <long double> (p.n_agents))), 0.0);
+    best_solution.assign(p.max_iter/p.n_agents, 0.0);
 }
 
 //// Give the team a new start
@@ -16,9 +16,8 @@ void Team::new_start(void){
     }
 
     // Instantiate the sharing vectors for agents
-    Agent().all_fx_current.assign(static_cast <unsigned long> (p.n_agents), 0.0);
-    Agent().all_xx_current.assign(static_cast <unsigned long> (p.n_agents),
-            vector<long double>(static_cast <unsigned long> (p.D, 0.0)));
+    Agent().all_fx_current.assign(p.n_agents, 0.0);
+    Agent().all_xx_current.assign(p.n_agents, vector<long double>(p.D, 0.0));
 
     // Give agents starting locations
     for(int i=0; i<p.n_agents; i++){

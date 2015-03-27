@@ -84,7 +84,7 @@ void Agent::iterate(int iter){
     iteration_number = iter;
 
     // Vector for saving new candidate solution
-    vector<long double> x_cand(static_cast <unsigned long> (p.D), 0.0);
+    vector<long double> x_cand(p.D, 0.0);
 
     // Objective function value of current solution, and probability of accepting new solution
     long double fx_cand, p_accept;
@@ -184,5 +184,5 @@ long double Agent::update_triki(void){
 }
 
 long double Agent::update_cauchy(void){
-     return p.temp_init / (1 + p.delt * (static_cast <long double> (iteration_number)));
+     return p.temp_init / (1.0 + p.delt * iteration_number);
 }

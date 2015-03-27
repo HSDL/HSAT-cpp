@@ -1,7 +1,7 @@
 #include "../../include/meta_optim/pattern.hpp"
 
 // Null initializer for search
-Search::Search(){seed_time();}
+Search::Search(){}
 
 void Search::parse_param_file(string file_name){
     // Set the parameters to their current values in the setup file
