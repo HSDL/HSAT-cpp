@@ -15,7 +15,7 @@ public:
     //// Variables
     // Must be set separately
     int n_reps;
-    int max_iter;
+    unsigned long max_iter;
     int D;
     long double ub;
     long double lb;
