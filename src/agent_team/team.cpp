@@ -10,9 +10,10 @@ Team::Team(Parameters x){
 //// Give the team a new start
 void Team::new_start(void){
 
+    agent_list.clear();
+
     // Create agent list
     for(int i=0; i<p.n_agents; i++){
-        // agent_list.push_back(Agent(i, p));
         agent_list.emplace_back(Agent(i, p));
     }
 
