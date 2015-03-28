@@ -10,6 +10,11 @@ Team::Team(Parameters x){
 //// Give the team a new start
 void Team::new_start(void){
 
+    // If 
+    if(agent_list.size() > 0){
+        agent_list.clear();
+    }
+
     // Create agent list
     for(int i=0; i<p.n_agents; i++){
         agent_list.emplace_back(Agent(i, p));
