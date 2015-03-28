@@ -20,6 +20,8 @@ void PatternSearch::solve(int max_iter, bool verb){
         cout << "\nBeginning Optimization Routine, fx = " << fx_best << endl;
     }
 
+    vector<MultipleTeams> mt_list;
+
     while(current_iteration < max_iter){
         // This variable will keep track of whether or not an improvement has been made
         IMPROVED = false;
@@ -44,8 +46,10 @@ void PatternSearch::solve(int max_iter, bool verb){
                 p_current.set_from_pair(var_name[i], new_val);
 
                 // Evalute the new combination
-                MultipleTeams MTR(p_current);
-                fx_current = MTR.solve();
+                mt_list.emplace(MulipleTeams(p_current));
+                fx_current = mt_list[mt_list.size()-1].solve();
+                // MultipleTeams MTR(p_current);
+                // fx_current = MTR.solve();
                 cout << "fx = " << fx_current << endl;
 
                 // Keep track of the best solution
