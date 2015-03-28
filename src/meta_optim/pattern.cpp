@@ -46,7 +46,7 @@ void PatternSearch::solve(int max_iter, bool verb){
                 p_current.set_from_pair(var_name[i], new_val);
 
                 // Evalute the new combination
-                mt_list.emplace(MultipleTeams(p_current));
+                mt_list.emplace_back(MultipleTeams(p_current));
                 fx_current = mt_list[mt_list.size()-1].solve();
                 // MultipleTeams MTR(p_current);
                 // fx_current = MTR.solve();
