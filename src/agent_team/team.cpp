@@ -12,7 +12,8 @@ void Team::new_start(void){
 
     // Create agent list
     for(int i=0; i<p.n_agents; i++){
-        agent_list.push_back(Agent(i, p));
+        // agent_list.push_back(Agent(i, p));
+        agent_list.push_back(i, p);
     }
 
     // Instantiate the sharing vectors for agents
