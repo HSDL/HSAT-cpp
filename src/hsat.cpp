@@ -4,8 +4,6 @@
 #include "../include/utils/customprint.hpp"
 #include <sys/time.h>
 
-//using namespace std;
-
 int main(int argc, char *argv[]) {
     // Random seed
     seed_time();
@@ -21,6 +19,7 @@ int main(int argc, char *argv[]) {
     bool univariate = false;
     bool pattern = false;
     bool found_output = false;
+    bool found_input = false;
     bool verb = false;
     string input;
     string output;
@@ -48,6 +47,7 @@ int main(int argc, char *argv[]) {
         else if (string(argv[i]) == "--input"    || string(argv[i]) == "-i") {
             i++;
             input = string(argv[i]);
+            found_input = true;
         }
         else if (string(argv[i]) == "--verbose"  || string(argv[i]) == "-v") {
             verb = true;
@@ -107,15 +107,19 @@ int main(int argc, char *argv[]) {
             return 0;
         }
         else {
-            cout << "Invalid option: '" << string(argv[i]) << "' is not recognized. Try running 'hsat --help' for help text." << endl;
+            cout << "hsat: Invalid option, '" << string(argv[i]) << "' is not recognized. Try running 'hsat --help' for help text." << endl;
             return 1;
         }
     }
 
+    // Make sure there's an input file
+    if(!found_input) {
+        cout << "hsat: An input file was not provided, but is required for --bench, --univariate, and --pattern." << endl;
+        return 1;
+    }
+
     // Run benchmarking
     if(bench){
-        long double fxmean = 0;
-
         // Initialize it
         MultipleTeams MT(input);
 
@@ -124,11 +128,8 @@ int main(int argc, char *argv[]) {
             MT.p.print_params();
         }
 
-        // Solve it
-        fxmean = MT.solve();
-
         // Print output if requested
-        cout << endl << "mean solution = " << fxmean << endl << endl;
+        cout << endl << "mean solution = " << MT.solve() << endl << endl;
         if(verb){
             cout << "all solutions = " << endl;
             print(MT.cdf);
