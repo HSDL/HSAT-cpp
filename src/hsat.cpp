@@ -53,11 +53,11 @@ int main(int argc, char *argv[]) {
             verb = true;
         }
         else if (string(argv[1]) == "--help"     || string(argv[i]) == "-h" || argc == 1) {
-            cout << endl;
+            cout << "                                                                          " << endl;
             cout << "HSAT                                                                      " << endl;
             cout << "    Usage: hsat [OPTION]...                                               " << endl;
             cout << "    Implements the Heterogenous Simulated Annealing Teams Algorithm.      " << endl;
-            cout << endl;
+            cout << "                                                                          " << endl;
             cout << "OPTIONS                                                                   " << endl;
             cout << "   -b,      --bench           asdf                                        " << endl;
             cout << "   -u N,    --univar N        asdf                                        " << endl;
@@ -65,13 +65,21 @@ int main(int argc, char *argv[]) {
             cout << "   -o FILE, --output FILE     asdf                                        " << endl;
             cout << "   -i FILE, --input FILE      asdf                                        " << endl;
             cout << "   -v,      --verbose         asdf                                        " << endl;
-            cout << endl;
+            cout << "                                                                          " << endl;
             cout << "BENCHMARKING SYNTAX                                                       " << endl;
             cout << "   Lorem ipsum...                                                         " << endl;
-            cout << endl;
+            cout << "                                                                          " << endl;
             cout << "META OPTIMIZATION SYNTAX                                                  " << endl;
-            cout << "   Lorem ipsum...                                                         " << endl;
-            cout << endl;
+            cout << "   A meta-optimization file servesas the input file when using the -univar" << endl;
+            cout << "   flag and the -pattern flag. The syntax is nearly identical to that used" << endl;
+            cout << "   for benchmarking, and the same keywords are required. The main         " << endl;
+            cout << "   difference is that every keyword/value pair is followed by a 0 or 1    " << endl;
+            cout << "   (indicating if the parameter should be tuned) and then two more values," << endl;
+            cout << "   specifying a lower and upper bound. See examples below.                " << endl;
+            cout << "      KEYWORD  VALUE  BOOL  LOWER_BOUND  UPPER_BOUND                      " << endl;
+            cout << "      DELT     0.1    1     1e-10        100.0                            " << endl;
+            cout << "      MAX_IT   10000  0                                                   " << endl;
+            cout << "                                                                          " << endl;
             return 0;
         }
         else {
