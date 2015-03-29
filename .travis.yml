@@ -8,3 +8,4 @@ script:
   - bash test_bench.sh
   - bash test_univar.sh
   - bash test_pattern.sh
+  - bash test_help.sh
