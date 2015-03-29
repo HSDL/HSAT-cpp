@@ -55,7 +55,7 @@ MultipleTeams::MultipleTeams(string file_name){
 long double MultipleTeams::solve(void){
 
     // Make a list of teams
-    team_list<Team>;
+    vector<Team> team_list;
 
     // Instantiate a new team
     for(int i = 0; i<p.n_reps; i++) {
