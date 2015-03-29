@@ -3,6 +3,9 @@
 #include "../include/meta_optim/pattern.hpp"
 #include "../include/utils/customprint.hpp"
 #include <sys/time.h>
+#include <omp.h>
+
+omp_set_num_threads(4);
 
 int main(int argc, char *argv[]) {
     // Random seed
