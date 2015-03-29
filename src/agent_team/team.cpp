@@ -55,12 +55,12 @@ void Team::iterate(int iter){
 //// Solve the team
 void Team::solve(void){
     // Iterate many times, and save the best solution each time
-    for(int i=1; i<p.max_iter/(long double)p.n_agents; i++){
+    for(int i=1; i<p.max_iter/p.n_agents; i++){
         // Do the iteration
         iterate(i);
 
         // Save the best solution
-        best_solution[i] = vector_min(agent_list[0].all_fx_current);
+        best_solution[i] = vector_min(Agent().all_fx_current);
 
         // If it isn't better than last time, overwrite
         if(best_solution[i] > best_solution[i-1]){
