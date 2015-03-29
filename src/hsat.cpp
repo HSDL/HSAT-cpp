@@ -27,36 +27,57 @@ int main(int argc, char *argv[]) {
 
     // Parse the inputs
     for(int i=1; i < argc; i++) {
-        if (string(argv[i]) == "--bench"    || string(argv[i]) == "-b") {
+        if      (string(argv[i]) == "--bench"    || string(argv[i]) == "-b") {
             bench = true;
         }
-        if (string(argv[i]) == "--univar"   || string(argv[i]) == "-u") {
+        else if (string(argv[i]) == "--univar"   || string(argv[i]) == "-u") {
             univariate = true;
             i++;
             max_iter = atoi(argv[i]);
         }
-        if (string(argv[i]) == "--pattern"  || string(argv[i]) == "-p") {
+        else if (string(argv[i]) == "--pattern"  || string(argv[i]) == "-p") {
             pattern = true;
             i++;
             max_iter = atoi(argv[i]);
         }
-        if (string(argv[i]) == "--output"   || string(argv[i]) == "-o") {
+        else if (string(argv[i]) == "--output"   || string(argv[i]) == "-o") {
             i++;
             output = string(argv[i]);
             found_output = true;
         }
-        if (string(argv[i]) == "--input"    || string(argv[i]) == "-i") {
+        else if (string(argv[i]) == "--input"    || string(argv[i]) == "-i") {
             i++;
             input = string(argv[i]);
         }
-        if (string(argv[i]) == "--verbose"  || string(argv[i]) == "-v") {
+        else if (string(argv[i]) == "--verbose"  || string(argv[i]) == "-v") {
             verb = true;
         }
-    }
-
-    // If no arguments, provide help text
-    if(argc == 1){
-        cout << "." << endl;
+        else if (string(argv[1]) == "--help"     || string(argv[i]) == "-h" || argc == 1) {
+            cout << endl;
+            cout << "HSAT                                                                      " << endl;
+            cout << "    Usage: hsat [OPTION]...                                               " << endl;
+            cout << "    Implements the Heterogenous Simulated Annealing Teams Algorithm.      " << endl;
+            cout << endl;
+            cout << "OPTIONS                                                                   " << endl;
+            cout << "   -b,      --bench           asdf                                        " << endl;
+            cout << "   -u N,    --univar N        asdf                                        " << endl;
+            cout << "   -p N,    --pattern N       asdf                                        " << endl;
+            cout << "   -o FILE, --output FILE     asdf                                        " << endl;
+            cout << "   -i FILE, --input FILE      asdf                                        " << endl;
+            cout << "   -v,      --verbose         asdf                                        " << endl;
+            cout << endl;
+            cout << "BENCHMARKING SYNTAX                                                       " << endl;
+            cout << "   Lorem ipsum...                                                         " << endl;
+            cout << endl;
+            cout << "META OPTIMIZATION SYNTAX                                                  " << endl;
+            cout << "   Lorem ipsum...                                                         " << endl;
+            cout << endl;
+            return 0;
+        }
+        else {
+            cout << "Invalid option: '" << string(argv[i]) << "' is not recognized. Try running 'hsat --help' for help text." << endl;
+            return 1;
+        }
     }
 
     // Run benchmarking
