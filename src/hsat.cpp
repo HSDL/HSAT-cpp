@@ -3,7 +3,6 @@
 #include "../include/meta_optim/pattern.hpp"
 #include "../include/utils/customprint.hpp"
 #include <sys/time.h>
-#include <omp.h>
 
 int main(int argc, char *argv[]) {
 
