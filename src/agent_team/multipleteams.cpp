@@ -27,56 +27,21 @@ MultipleTeams::MultipleTeams(string file_name){
 }
 
 //// This actually solves the problem LOTS of times.
-// long double MultipleTeams::solve(void){
-
-//     for(int i = 0; i<p.n_reps; i++) {
-//         // Instantiate a new team
-//         Team T(p);
-
-//         // Give the team a new start
-//         T.new_start();
-
-//         // Solve the problem with the team
-//         T.solve();
-
-//         // Save results
-//         cdf[i] = T.best_solution.back();
-//         best_solution[i] = T.best_solution;
-//     }
-
-//     // Sort the cdf vector
-//     sort(cdf.begin(), cdf.end());
-
-//     // Return the mean solution
-//     return mean(cdf);
-// }
-
-//// This actually solves the problem LOTS of times.
 long double MultipleTeams::solve(void){
 
-    // Make a list of teams
-    vector<Team> team_list;
+    for(int i = 0; i<p.n_reps; i++) {
+        // Instantiate a new team
+        Team T(p);
 
-    // Instantiate a new team
-    for(int i = 0; i<p.n_reps; i++) {
-        team_list.emplace_back(Team(p));
-    }
-    
-    // Give the team a new start
-    for(int i = 0; i<p.n_reps; i++) {
-        team_list[i].new_start();
-    }
-    
-    // Solve the problem with the team
-    # pragma omp parallel for
-    for(int i = 0; i<p.n_reps; i++) {
-        team_list[i].solve();
-    }
+        // Give the team a new start
+        T.new_start();
 
-    // Save results    
-    for(int i = 0; i<p.n_reps; i++) {
-        cdf[i] = team_list[i].best_solution.back();
-        best_solution[i] = team_list[i].best_solution;
+        // Solve the problem with the team
+        T.solve();
+
+        // Save results
+        cdf[i] = T.best_solution.back();
+        best_solution[i] = T.best_solution;
     }
 
     // Sort the cdf vector
@@ -85,3 +50,38 @@ long double MultipleTeams::solve(void){
     // Return the mean solution
     return mean(cdf);
 }
+
+//// This actually solves the problem LOTS of times.
+// long double MultipleTeams::solve(void){
+
+//     // Make a list of teams
+//     vector<Team> team_list;
+
+//     // Instantiate a new team
+//     for(int i = 0; i<p.n_reps; i++) {
+//         team_list.emplace_back(Team(p));
+//     }
+    
+//     // Give the team a new start
+//     for(int i = 0; i<p.n_reps; i++) {
+//         team_list[i].new_start();
+//     }
+    
+//     // Solve the problem with the team
+//     # pragma omp parallel for
+//     for(int i = 0; i<p.n_reps; i++) {
+//         team_list[i].solve();
+//     }
+
+//     // Save results    
+//     for(int i = 0; i<p.n_reps; i++) {
+//         cdf[i] = team_list[i].best_solution.back();
+//         best_solution[i] = team_list[i].best_solution;
+//     }
+
+//     // Sort the cdf vector
+//     sort(cdf.begin(), cdf.end());
+
+//     // Return the mean solution
+//     return mean(cdf);
+// }
