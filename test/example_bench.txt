@@ -1,7 +1,7 @@
 FUNC    ackley
 ADAPT   1
 INTER   1
-NREPS   10
+NREPS   100
 MAX_IT  10000
 DIMS    10
 UBND    10
