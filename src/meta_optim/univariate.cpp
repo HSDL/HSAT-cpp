@@ -75,7 +75,7 @@ void UnivariateSearch::solve(int max_iter, bool verb){
 
             // Now, perform regression with Y and X
             quad_res = quad_max(X, Y);
-            if(quad_res[3] > 0.01) {
+            if(quad_res[3] > 0.03) {
                 p_best.set_from_pair(var_name[i], quad_res[0]);
                 var_vals[i] = p_best.get_from_name(var_name[i]);
                 // Check to see if we're against a non-limiting edge solution
@@ -87,7 +87,7 @@ void UnivariateSearch::solve(int max_iter, bool verb){
             }
 
             if(verb) {
-                cout << " = " << quad_res[0]
+                cout << " = " << p_best.get_from_name(var_name[i])
                         << ", mean = " << quad_res[2]
                         << ", r2 = " << quad_res[3]
                         << ", " << (EDGE_SOLUTION ? "edge" : "interior") << endl;
