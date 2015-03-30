@@ -7,8 +7,6 @@
 
 int main(int argc, char *argv[]) {
 
-omp_set_num_threads(4);
-
     // Random seed
     seed_time();
 
