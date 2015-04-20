@@ -5,17 +5,17 @@
 //// Define the Griewank function
 long double griewank(vector<long double> x){
     // Initialize a couple variable for sums
-    long double fx1 = 0;
-    long double fx2 = 1;
+    long double fx1 = 0.0;
+    long double fx2 = 1.0;
 
     // Step through every dimensions and do a thing
     for(int i=0; i < x.size(); i++){
-        fx1 += 360*x[i]*x[i];
-        fx2 *= cos(60*x[i]/sqrt(static_cast <long double> (i+1)));
+        fx1 += x[i]*x[i];
+        fx2 *= cos(x[i]/sqrt(static_cast <long double> (i+1)));
     }
 
     // Return a sum of sums
-    return 1.0 + fx1/4000.0 - fx2;
+    return abs(1.0 + fx1/4000.0 - fx2);
 }
 
 //// Define the Ackley function
@@ -27,12 +27,12 @@ long double ackley(vector<long double> x){
 
     // Step through every dimensions and do a thing
     for(int i=0; i < D; i++){
-        fx1 += (3.2768*x[i])*(3.2768*x[i]);
-        fx2 += cos(2*PI*3.2768*x[i]);
+        fx1 += x[i]*x[i];
+        fx2 += cos(2.0*PI*x[i]);
     }
 
     // Return a sum of sums
-    return -20.0*exp(-0.2*sqrt(fx1/D)) - exp(fx2/D) + 20.0 + exp(1.0);
+    return abs(-20.0*exp(-0.2*sqrt(fx1/D)) - exp(fx2/D) + 20.0 + exp(1.0));
 }
 
 //// Define the Rastigrin function
@@ -41,11 +41,10 @@ long double rastigrin(vector<long double> x){
     long double fx = 0;
 
     // Step through every dimensions and do a thing
-    // The funky coefficients scale the function so it falls on a [-10 10] range, instead of [-5.12, 5.12] as usual.
     for(int i=0; i < x.size(); i++){
-        fx += x[i]*x[i]*0.262144 - 10*cos(2*PI*x[i]*0.512) + 10.00;
+        fx += x[i]*x[i] - 10.0*cos(2.0*PI*x[i]) + 10.00;
     }
 
     // Return a sum of sums
-    return fx;
+    return abs(fx);
 }
