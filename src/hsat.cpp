@@ -76,23 +76,25 @@ int main(int argc, char *argv[]) {
             cout << "   The syntax consists of keyword/value pairs on unique lines. A list of  " << endl;
             cout << "   the necessary keywords and their allowable values are provided below.  " << endl;
             cout << "      KEYWORD    VALUE       NOTE                                         " << endl;
-            cout << "      FUNC       ackley      asdf                                         " << endl;
-            cout << "                 griewank    asdf                                         " << endl;
-            cout << "                 rastigrin   asdf                                         " << endl;
-            cout << "      ADAPT      0           asdf                                         " << endl;
-            cout << "                 1           asdf                                         " << endl;
-            cout << "      INTER      0           asdf                                         " << endl;
-            cout << "                 1           asdf                                         " << endl;
-            cout << "      NREPS      positive    asdf                                         " << endl;
-            cout << "      MAX_IT     positive    asdf                                         " << endl;
-            cout << "      DIMS       positive    asdf                                         " << endl;
-            cout << "      UBND       real        asdf                                         " << endl;
+            cout << "      FUNC       ackley      Optimizes the Ackley function.               " << endl;
+            cout << "                 griewank    Optimizes the Griewank function.             " << endl;
+            cout << "                 rastigrin   Optimizes the Rastrigin function.            " << endl;
+            cout << "      ADAPT      0           Non-adaptive annealing schedule.             " << endl;
+            cout << "                 1           Adaptive annealing schedule.                 " << endl;
+            cout << "      INTER      0           Non-interacting.                             " << endl;
+            cout << "                 1           Interaction between agents allowed.          " << endl;
+            cout << "      NREPS      positive    Number of times to repeat simulation.        " << endl;
+            cout << "      MAX_IT     positive    Number of iterations in a single simulation. " << endl;
+            cout << "      DIMS       positive    Number of dimensions in the objective.       " << endl;
+            cout << "                             function.                                    " << endl;
+            cout << "      UBND       real        Upper bound on the design variables.         " << endl;
             cout << "      LBND       real        Must be less than the value assigned to UBND." << endl;
-            cout << "      NAGENTS    positive    asdf                                         " << endl;
-            cout << "      TINIT      positive    asdf                                         " << endl;
-            cout << "      DELT       positive    asdf                                         " << endl;
-            cout << "      L_HIST     positive    asdf                                         " << endl;
-            cout << "                 negative    asdf                                         " << endl;
+            cout << "      NAGENTS    positive    Number of agents in simulation.              " << endl;
+            cout << "      TINIT      positive    Initial temperature.                         " << endl;
+            cout << "      DELT       positive    Temperature factor.                          " << endl;
+            cout << "      L_HIST     positive    Updates temperature intermittently.          " << endl;
+            cout << "                 negative    Updates temperature at every step using a    " << endl;
+            cout << "                             sliding window approach.                     " << endl;
             cout << "                                                                          " << endl;
             cout << "META OPTIMIZATION SYNTAX                                                  " << endl;
             cout << "   A meta-optimization text file serves as the input file for the --univar" << endl;
@@ -183,10 +185,11 @@ int main(int argc, char *argv[]) {
 
     // Take finished time and print duration
     gettimeofday(&end, NULL);
-    delta = ((end.tv_sec  - start.tv_sec) * 1000000u + end.tv_usec - start.tv_usec) / 1.e6;
+    delta = ((end.tv_sec - start.tv_sec) * 1000000u + end.tv_usec - start.tv_usec) / 1.e6;
 
     cout.precision(2);
-    cout << fixed << delta << " seconds elapsed." << endl;
-
+    if(verb) {
+        cout << fixed << delta << " seconds elapsed." << endl;
+    }
     return 0;
 }
