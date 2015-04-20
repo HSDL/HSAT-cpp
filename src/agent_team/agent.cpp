@@ -63,7 +63,7 @@ vector<long double> Agent::candidate_solution(void){
     int NOT_IN_DOMAIN = 0;
     for(int i=0; i<p.D; i++){
         candidate[i] += 0.5*Ti*tan(urv[i]);
-        if(abs(candidate[i]) > 10.0){
+        if(candidate[i] < p.lb || candidate[i] > p.ub){
             NOT_IN_DOMAIN += 1;
         }
     }
