@@ -1,4 +1,5 @@
 # HSAT [![Build Status](https://travis-ci.org/cmccomb/HSAT.svg?branch=master)](https://travis-ci.org/cmccomb/HSAT)
+Based on [this work](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=0P9w_S0AAAAJ&citation_for_view=0P9w_S0AAAAJ:LkGwnXOMwfcC)
 
 ## Summary
 Building using Cmake will produce   ``hsat``, compiled code for executing the HSAT algorithm.
