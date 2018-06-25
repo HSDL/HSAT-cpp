@@ -13,7 +13,7 @@ Building using Cmake will produce ``hsat``, compiled code for executing the HSAT
 |  ``--univar n``, ``-u n`` | Instructs the algorithm to perform a stochastic univariate search with n iterations to tune parameters. |
 |  ``--verbose``, ``-v`` | Verbose mode (lots of output). Limited integration at the moment. |
 
-## Citations
+## Citing This Work
 1. McComb C, Cagan J, Kotovsky K. Drawing Inspiration From Human Design Teams for Better Search and Optimization: The Heterogeneous Simulated Annealing Teams Algorithm. ASME. J. Mech. Des. 2016;138(4):044501-044501-6. doi:10.1115/1.4032810.
 2. McComb, Christopher, Jonathan Cagan, and Kenneth Kotovsky. "Heterogeneous Simulated Annealing Teams: An Optimizing Search Algorithm Inspired by Engineering Design Teams." International Conference on Engineering Design, Milan, Italy, July. 2015. doi:10.17605/OSF.IO/8K2CR.
 
