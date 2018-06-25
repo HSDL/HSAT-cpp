@@ -17,5 +17,3 @@ Building using Cmake will produce ``hsat``, compiled code for executing the HSAT
 
 ## Acknowledgements
 This material is based upon work supported by the National Science Foundation Graduate Research Fellowship under Grant No. DGE125252 and the United States Air Force Office of Scientific Research through grant FA9550-12-1-0374.
-
-**Contributors:** {% for member in site.github.contributors %}<a href="{{member.html_url}}"><img src="{{member.avatar_url}}" width="32" height="32"></a>{% endfor %}
