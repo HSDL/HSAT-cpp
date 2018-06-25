@@ -4,6 +4,11 @@
 Building using Cmake will produce ``hsat``, compiled code for executing the HSAT algorithm.
 
 ## Options
+<style>
+.tablelines table, .tablelines td, .tablelines th {
+        border: 1px solid black;
+        }
+</style>
 | Flag                          | Description                                               |
 |-------------------------------|---------|
 | ``--bench``,``-b`` | Instructs the algorithm to benchmark the set of options in input. |
