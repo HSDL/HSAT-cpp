@@ -1,3 +1,5 @@
+**Contributors:** {% for member in site.github.contributors %}<a href="{{member.html_url}}"><img src="{{member.avatar_url}}" width="32" height="32"></a>{% endfor %}
+
 ## Summary
 Building using Cmake will produce ``hsat``, compiled code for executing the HSAT algorithm.
 
@@ -10,6 +12,7 @@ Building using Cmake will produce ``hsat``, compiled code for executing the HSAT
 |  ``--pattern n``, ``-p n`` | Instructs the algorithm to perform a pattern search with n iterations to tune parameters. |
 |  ``--univar n``, ``-u n`` | Instructs the algorithm to perform a stochastic univariate search with n iterations to tune parameters. |
 |  ``--verbose``, ``-v`` | Verbose mode (lots of output). Limited integration at the moment. |
+{: .tablelines}
 
 ## Citing This Work
 1. McComb C, Cagan J, Kotovsky K. Drawing Inspiration From Human Design Teams for Better Search and Optimization: The Heterogeneous Simulated Annealing Teams Algorithm. ASME. J. Mech. Des. 2016;138(4):044501-044501-6. doi:10.1115/1.4032810.
