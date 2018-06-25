@@ -2,9 +2,9 @@
 Building using Cmake will produce ``hsat``, compiled code for executing the HSAT algorithm.
 
 ## Options
-| Flag      | Description |
-| -------- | --------- |
-``--bench``,``-b`` | Instructs the algorithm to benchmark the set of options in input. |
+| Flag                          | Description                                               |
+|-------------------------------|---------|
+| ``--bench``,``-b`` | Instructs the algorithm to benchmark the set of options in input. |
 | ``--input file``, ``-i file`` | Denotes the input file for the algorithm. |
 | ``--output file``, ``-o file`` | Denotes the output file for the algorithm. |
 |  ``--pattern n``, ``-p n`` | Instructs the algorithm to perform a pattern search with n iterations to tune parameters. |
