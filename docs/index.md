@@ -4,19 +4,15 @@
 Building using Cmake will produce ``hsat``, compiled code for executing the HSAT algorithm.
 
 ## Options
-<style>
-.tablelines table, .tablelines td, .tablelines th {
-        border: 1px solid black;
-        }
-</style>
+<style>.tablelines table, .tablelines td, .tablelines th { border: 1px solid black; }</style>
 | Flag                          | Description                                               |
 |-------------------------------|---------|
-| ``--bench``,``-b`` | Instructs the algorithm to benchmark the set of options in input. |
-| ``--input file``, ``-i file`` | Denotes the input file for the algorithm. |
-| ``--output file``, ``-o file`` | Denotes the output file for the algorithm. |
-|  ``--pattern n``, ``-p n`` | Instructs the algorithm to perform a pattern search with n iterations to tune parameters. |
-|  ``--univar n``, ``-u n`` | Instructs the algorithm to perform a stochastic univariate search with n iterations to tune parameters. |
-|  ``--verbose``, ``-v`` | Verbose mode (lots of output). Limited integration at the moment. |
+| ``--bench``<br/>``-b`` | Instructs the algorithm to benchmark the set of options in input. |
+| ``--input file``<br/>``-i file`` | Denotes the input file for the algorithm. |
+| ``--output file``<br/>``-o file`` | Denotes the output file for the algorithm. |
+|  ``--pattern n``<br/>``-p n`` | Instructs the algorithm to perform a pattern search with n iterations to tune parameters. |
+|  ``--univar n``<br/>``-u n`` | Instructs the algorithm to perform a stochastic univariate search with n iterations to tune parameters. |
+|  ``--verbose``<br/>``-v`` | Verbose mode (lots of output). Limited integration at the moment. |
 {: .tablelines}
 
 ## Citing This Work
